@@ -1,5 +1,5 @@
 {
-  "homepage": "http://froelicher.github.io/art-project",
+  "homepage": "https://github.com/Froelicher/art-project.git",
   "name": "opensea-ships-log",
   "version": "1.0.0",
   "description": "An example app listing recent auctions and bids on OpenSea, with the ability to buy items or accept offers right from the page",
