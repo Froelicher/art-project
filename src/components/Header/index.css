@@ -1,0 +1,21 @@
+  .header-home{
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    text-align: center;
+    background-color : rgba(255,255,255, 0.5);
+    background : url('https://art.websimple.ch/wp-content/uploads/2020/12/alice-donovan-rouse-yu68fUQDvOI-unsplash-scaled.jpg');
+    height : 400px;
+    width : 100%;
+    display : table;
+    position : fixed;
+  }
+
+  h1{
+    display : table-cell;
+    vertical-align : middle;
+    text-align : center;
+  }
+
+  h6 img {
+    width: 24px;
+  }
