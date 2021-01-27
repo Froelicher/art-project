@@ -37,7 +37,15 @@ export default class Home extends React.Component {
       lineHeight: '10px',
       color: 'white',
       display: 'flex', alignItems: 'center', justifyContent: 'center'
-  }
+    }
+    
+    const header = {
+      fontFamily: 'Menlo-Regular, Menlo, monospace',
+      fontSize: 44,
+      lineHeight: '10px',
+      color: 'white',
+      display: 'flex', alignItems: 'center', justifyContent: 'center'
+    }
     return (
         <Parallax ref="parallax" pages={4}>
 
@@ -49,7 +57,7 @@ export default class Home extends React.Component {
           <Parallax.Layer
                 offset={0}
                 speed={0.5}
-                style={styles}
+                style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
                 Izumi Art - NFT Artworks
@@ -57,10 +65,9 @@ export default class Home extends React.Component {
           <main>
           <Parallax.Layer
                 offset={1}
-                speed={-0.1}
+                speed={0.5}
                 style={styles}
                 onClick={() => this.refs.parallax.scrollTo(2)}>
-                OnScr
             <Section>
             <div class="how-section">
               <div class="four-col">
