@@ -1,0 +1,84 @@
+  .header-home{
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    text-align: center;
+    background-color : rgba(255,255,255, 0.5);
+    background : url('https://art.websimple.ch/wp-content/uploads/2020/12/alice-donovan-rouse-yu68fUQDvOI-unsplash-scaled.jpg');
+    height : 400px;
+    width : 100%;
+    display : table;
+    position : fixed;
+  }
+
+  h1{
+    display : table-cell;
+    vertical-align : middle;
+    text-align : center;
+  }
+
+  h6 img {
+    width: 24px;
+  }
+
+  :local(.root) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+:local(.scroll) {
+    position: absolute;
+    bottom: 5em;
+    left: 50%;
+    transform: translateX(-50%);
+    color:red;
+    font-weight: 500;
+}
+
+:local(.container) {
+    position: relative;
+    width: 25em;
+}
+
+:local(.ring) {
+    position: relative;
+    z-index: 2;
+}
+
+:local(.circle) {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    z-index: 1;
+
+    .parallax-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 3px solid red;
+        border-radius: 50%;
+    }
+}
+
+:local(.circleInner) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid red;
+    border-radius: 50%;
+}
+
+:local(.hemispheres) {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+}
