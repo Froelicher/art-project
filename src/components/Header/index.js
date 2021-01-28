@@ -8,7 +8,7 @@ export default class Header extends React.Component {
   render() {
     const styles = {
         fontFamily: 'Menlo-Regular, Menlo, monospace',
-        fontSize: 14,
+        fontSize: 15,
         lineHeight: '10px',
         color: 'white',
         display: 'flex', alignItems: 'center', justifyContent: 'center'
