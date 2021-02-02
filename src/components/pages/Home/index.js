@@ -34,18 +34,31 @@ export default class Home extends React.Component {
     const styles = {
       fontFamily: 'Menlo-Regular, Menlo, monospace',
       fontSize: 14,
-      lineHeight: '10px',
+      lineHeight: '18px',
       color: 'white',
       display: 'flex', alignItems: 'center', justifyContent: 'center'
     }
     
     const header = {
       fontFamily: 'Menlo-Regular, Menlo, monospace',
-      fontSize: 44,
       lineHeight: '10px',
       color: 'white',
-      display: 'flex', alignItems: 'center', justifyContent: 'center'
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: 44
     }
+
+    const buttonBottom = {
+      fontSize: 10,
+      position : 'absolute',
+      bottom : 20,
+      margin : 'auto',
+      cursor : 'pointer'
+    }
+
+    const title_page = {
+      fontSize: 42
+    }
+
     return (
         <Parallax ref="parallax" pages={4}>
 
@@ -60,33 +73,62 @@ export default class Home extends React.Component {
                 style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
-                Izumi Art - NFT Artworks
+                <h1>Izumi Art - NFT Artworks</h1>
+                <div style={buttonBottom}>
+                  <p>Go to bottom</p>
+                </div>
             </Parallax.Layer>
           <main>
           <Parallax.Layer
                 offset={1}
                 speed={0.5}
                 style={styles}
-                onClick={() => this.refs.parallax.scrollTo(2)}>
+                class="layerParallax"
+                onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
             <Section>
-            <div class="how-section">
-              <div class="four-col">
-                <h2>How to collect digital art ?</h2>
+            <div class="container">
+              <div class="whatis-section">
+                <div class="one-col">
+                  <h2 style={title_page}>What is an NFT ?</h2>
+                </div>
+                <div  class="two-col">
+                  <h4>Non-fungible token</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices vestibulum lorem, id tempor risus mattis vitae.
+                    Proin egestas ut eros ut vehicula. Quisque sit amet enim congue erat laoreet accumsan. 
+                    Praesent volutpat neque eu erat venenatis, ac maximus lectus volutpat. Duis accumsan diam a lacinia porttitor. Cras nec augue nec nunc ultricies consectetur.
+                  </p>
+                </div>
+                <div class="two-col">
+                  <h4>Non-fungible token</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices vestibulum lorem, id tempor risus mattis vitae.
+                    Proin egestas ut eros ut vehicula. Quisque sit amet enim congue erat laoreet accumsan. 
+                    Praesent volutpat neque eu erat venenatis, ac maximus lectus volutpat. Duis accumsan diam a lacinia porttitor. Cras nec augue nec nunc ultricies consectetur.
+                    Praesent sed sem augue. Nam sagittis quis sem quis auctor. Nunc efficitur nisl ultricies, viverra tellus non, pellentesque magna. Nulla varius porttitor velit.
+                  </p>
+                </div>
               </div>
-              <div class="four-col">
-                <h4>DISCOVER TOKENIZED DIGITAL ART.</h4>
-                <p>Artists issue authenticated single edition digital artworks. These are certified on the Ethereum blockchain to prevent forgery and provide historical provenance.</p>
-              </div>
-              <div class="four-col">
-                <h4>BUYING & SELLING</h4>
-                <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
-              </div>
-              <div class="four-col">
-                <h4>SHOWCASE YOUR COLLECTION</h4>
-                <p>Customize your profile to show off your art collection to patrons around the world. Display your works in a VR gallery, digital display, or anywhere else you like.</p>
+              <div class="how-section">
+                <div class="one-col">
+                  <h2 style={title_page}>How to collect digital art ?</h2>
+                </div>
+                <div class="three-col">
+                  <h4>DISCOVER TOKENIZED DIGITAL ART.</h4>
+                  <p>Artists issue authenticated single edition digital artworks. These are certified on the Ethereum blockchain to prevent forgery and provide historical provenance.</p>
+                </div>
+                <div class="three-col">
+                  <h4>BUYING & SELLING</h4>
+                  <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
+                </div>
+                <div class="three-col">
+                  <h4>SHOWCASE YOUR COLLECTION</h4>
+                  <p>Customize your profile to show off your art collection to patrons around the world. Display your works in a VR gallery, digital display, or anywhere else you like.</p>
+                </div>
               </div>
             </div>
             </Section>
+            <div style={buttonBottom}>
+                  <p class="layerParallax">Go to bottom</p>
+            </div>
             </Parallax.Layer>
             <Parallax.Layer
                 offset={2}
@@ -96,6 +138,9 @@ export default class Home extends React.Component {
                 <Log
                 seaport={this.seaport}
                 accountAddress={this.state.accountAddress} />
+                <div style={buttonBottom}>
+                  <p class="layerParallax">Go to bottom</p>
+                </div>
             </Parallax.Layer>
             
             <Parallax.Layer
@@ -120,6 +165,9 @@ export default class Home extends React.Component {
                     </p>
                   </div>
                 </Section>
+                <div style={buttonBottom}>
+                  <p class="layerParallax">Go to bottom</p>
+                </div>
               </Parallax.Layer>
           </main>
         </Parallax>
@@ -140,21 +188,41 @@ const ImgRibbon = styled.img`
 `
 
 const Section = styled.section`
-  .how-section{
-    padding-top : 60px;
-    width : 80%;
-    margin : auto;
+  .whatis-section{
+    padding-top : 30px;
   }
-  .four-col{
-    width : 25%;
+  .two-col{
+    width : 49%;
     display : inline-block;
-    padding : 20px;
+    padding : 20px 0px;
     height : 100%;
     vertical-align : top;
   }
-  .four-col h4{
+  .two-col p{
+    padding-right : 20px;
+  }
+  .two-col:last-child p{
+    padding-right : 0px;
+  }
+  .how-section{
+    padding-top : 60px;
+  }
+  .three-col{
+    width : 33%;
+    display : inline-block;
+    padding : 20px 0px;
+    height : 100%;
     vertical-align : top;
-    font-size : 8pt;
+  }
+  .three-col p{
+    padding-right : 20px;
+  }
+  .three-col:last-child p{
+    padding-right : 0px;
+  }
+  .three-col h4{
+    vertical-align : top;
+    font-size : 10pt;
     color : #000;
     font-weight : 700;
   }
