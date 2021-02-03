@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@600&display=swap');
+
 body {
-  font-family: Rubik, "Avenir Next", sans-serif;
+  font-family: 'Trispace', sans-serif;
+  font-size : 23px;
   color: rgb(87, 87, 87);
   background-color: white;
 }
-h1, h2, h3 {
-  color: black;
+h2, h3 {
+  font-family: 'Press Start 2P';
+  font-size : 35px;
+  color: rgb(255, 255, 255);
+}
+
+h1 {
+  font-family: 'Press Start 2P';
+  font-size : 65px;
+  color: rgb(255, 255, 255);
 }
 
 a {
@@ -29,3 +41,7 @@ nav ul li a {
   color: white;
   text-decoration: none;
 }
+.container{
+  padding-top : 64px;
+}
+

@@ -73,7 +73,7 @@ export default class Home extends React.Component {
                 style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
-                <h1>Izumi Art - NFT Artworks</h1>
+                <h1>MrCryptHODL - Cryptoart 'n' NFT</h1>
                 <div style={buttonBottom}>
                   <p>Go to bottom</p>
                 </div>
@@ -89,13 +89,11 @@ export default class Home extends React.Component {
             <div class="container">
               <div class="whatis-section">
                 <div class="one-col">
-                  <h2 style={title_page}>What is an NFT ?</h2>
+                  <h2 style={title_page}>Cryptoart and NFT ?</h2>
                 </div>
                 <div  class="two-col">
                   <h4>Non-fungible token</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices vestibulum lorem, id tempor risus mattis vitae.
-                    Proin egestas ut eros ut vehicula. Quisque sit amet enim congue erat laoreet accumsan. 
-                    Praesent volutpat neque eu erat venenatis, ac maximus lectus volutpat. Duis accumsan diam a lacinia porttitor. Cras nec augue nec nunc ultricies consectetur.
+                  <p>NFT stands for non-fungible tokens like ERC-721 (a smart contract standard) tokens which are hosted on Ethereum’s own blockchain. NFTs are unique digital items such as collectibles or artworks or game items. As an artist, by tokenizing your work you both ensure that it is unique and brand it as your work. The actual ownership is blockchain-managed.
                   </p>
                 </div>
                 <div class="two-col">

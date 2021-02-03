@@ -4,93 +4,70 @@ import Log from '../../Log';
 import Header from '../../Header';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
+import './index.css';
+import Background from './img/Cryptoart.png';
+import Mrcrypthodl from './img/Cryptoart Bitcoin.png';
 
-export default class Contact extends React.Component {
 
-  state = {
-    accountAddress: null
-  }
-
-  constructor(props) {
-    super(props)
-    this.onChangeAddress()
-    onNetworkUpdate(this.onChangeAddress)
-  }
-
-  onChangeAddress = () => {
-    this.seaport = new OpenSeaPort(web3Provider, {
-      networkName: Network.Main
-    })
-    this.web3 = this.seaport.web3
-    this.web3.eth.getAccounts((err, res) => {
-      this.setState({
-        accountAddress: res[0]
-      })
-    })
-  }
+export default class MyArt extends React.Component {
 
   render() {
+    const backgroundPage={
+      backgroundImage : `url(${Background})`
+    }
     return (
-      <div>
-        <Header />
-        <main>
-          <Section>
-          <div class="how-section">
-            <div class="four-col">
-              <h2>How to collect digital art ?</h2>
-            </div>
-            <div class="four-col">
-              <h4>DISCOVER TOKENIZED DIGITAL ART.</h4>
-              <p>Artists issue authenticated single edition digital artworks. These are certified on the Ethereum blockchain to prevent forgery and provide historical provenance.</p>
-            </div>
-            <div class="four-col">
-              <h4>BUYING & SELLING</h4>
-              <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
-            </div>
-            <div class="four-col">
-              <h4>SHOWCASE YOUR COLLECTION</h4>
-              <p>Customize your profile to show off your art collection to patrons around the world. Display your works in a VR gallery, digital display, or anywhere else you like.</p>
+      <main>
+        <Section style={backgroundPage}>
+          <div class="container">
+            <div class="about-section">
+              <div class="floating">
+                <img src={Mrcrypthodl} class="logo"></img>
+              </div>
+              <div  class="one-col">
+                <h2>Anything to say?</h2>
+                <h1>HODL@MrCryptHODL.com</h1>
+            
+                  <p>MrCryptHODL<br></br>
+                  ETH SIGNED MESSAGE :<a href="https://etherscan.io/verifySig/2359" target="_blank">https://etherscan.io/verifySig/2359</a></p>
+              </div>
             </div>
           </div>
-          </Section>
-          <Log
-            seaport={this.seaport}
-            accountAddress={this.state.accountAddress} />
-        </main>
-      </div>
+        </Section>
+       
+      </main>
     )
   }
 }
-
-const ImgRibbon = styled.img`
-  width: 150px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0;
-
-  @media(max-width: 600px) {
-    width: 80px;
-  }
-`
-
 const Section = styled.section`
+
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+height: 100%;
+width: 100%;
+.about-section{
+    padding-top : 30px;
+    color : #FFF;
+  }
+  .logo{
+    max-width : 550px;
+    margin : auto;
+    display : block;
+  }
+  .one-col{
+    text-align : justify;
+    padding-top : 15px;
+    padding-bottom : 10px;
+    margin-left : -50px;
+    margin-right : -50px;
+  }
+  .two-col p{
+    padding-right : 20px;
+  }
+  .two-col:last-child p{
+    padding-right : 0px;
+  }
   .how-section{
     padding-top : 60px;
-    width : 80%;
-    margin : auto;
-  }
-  .four-col{
-    width : 25%;
-    display : inline-block;
-    padding : 20px;
-    height : 100%;
-    vertical-align : top;
-  }
-  .four-col h4{
-    vertical-align : top;
-    font-size : 8pt;
-    color : #000;
-    font-weight : 700;
   }
 `

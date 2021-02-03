@@ -11,8 +11,9 @@ export default class Navigation extends React.Component {
     return(
       <nav>
         <ul>
-          <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/MyArt">My Art</NavLink></li>
+          <li><NavLink to="/">Home</NavLink></li> 
+          <li><NavLink to="/MyArt">About</NavLink></li>
+          <li><NavLink to="/Token">Token</NavLink></li>
           <li><NavLink to="/Collectibles">Collectibles</NavLink></li>
           <li><NavLink to="/Contact">Contact</NavLink></li>
         </ul>
