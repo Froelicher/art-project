@@ -80,11 +80,16 @@ body, html {
   grid-column-end: -1;
 }
 a {
-  color: #00ff15;
+  color:  #43f02c;
 }
 a:visited {
   color: rgb(22, 233, 57);
 }
 a:hover, a:active, a:focus {
   color:rgb(21, 255, 0);
+}
+@media screen and (max-width: 800px) {
+  .column {
+    width: 100%;
+  }
 }
