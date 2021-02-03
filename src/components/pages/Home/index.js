@@ -56,7 +56,7 @@ export default class Home extends React.Component {
     }
 
     const title_page = {
-      fontSize: 42
+      fontSize: 38
     }
 
     const title_page_center = {

@@ -35,6 +35,7 @@ export default class Token extends React.Component {
                 <p>Rarible Collection :<br></br> <a href="https://app.rarible.com/cryptart" target="_blank">https://app.rarible.com/cryptart</a><br></br></p>
                 <p>OpenSea Collection :<br></br> <a href="https://opensea.io/collection/cryptart" target="_blank">https://opensea.io/collection/cryptart</a><br></br></p>
               </div>
+              <p>ETH SIGNED MESSAGE :<a href="https://etherscan.io/verifySig/2359" target="_blank">https://etherscan.io/verifySig/2359</a></p>
             </div>
           </div>
         </div>
@@ -48,8 +49,8 @@ export default class Token extends React.Component {
                 <h2>ERC-721 CryptHODL(CHODL) Token</h2>
 
                 <p><a href="https://etherscan.io/token/0x91b16D509aa3377A526cD0794b8FF7DcFc84Fcdf" target="_blank">CryptHODL(CHODL)</a> is an ERC-721 token created <a href="https://etherscan.io/tx/0x86426358646eed03605f2747ea715eaa6de96851ade9d002fe924f448c744db0" target="_blank">Jan-20-2021[txn]</a> that is hosted on Ethereum's own blockchain.<br></br></p>
-                <p>this is the Token of the CryptHODL Project, The token is used to list physical art pieces on the blockchain.
-                <p></p>  Each collection of Cryptoart CryptHODL is delivered with its NFT version to proof the ownership of the crypto art</p>
+                <p>this is the Token of the CryptHODL Project, The token is used to list physical art pieces on the blockchain.</p>
+                <p>Each collection of Cryptoart CryptHODL is delivered with its NFT version to proof the ownership of the crypto art</p>
                 <p>Smart Contract Adress :<br></br> <a href="https://etherscan.io/address/0x91b16D509aa3377A526cD0794b8FF7DcFc84Fcdf" target="_blank">https://etherscan.io/address/0x91b16D509aa3377A526cD0794b8FF7DcFc84Fcdf</a><br></br></p>
                 <p>Etherscan Token Tracker :<br></br> <a href="https://etherscan.io/token/0x91b16D509aa3377A526cD0794b8FF7DcFc84Fcdf" target="_blank">https://etherscan.io/token/0x91b16D509aa3377A526cD0794b8FF7DcFc84Fcdf</a><br></br></p>
                 <p>Rarible Collection :<br></br> <a href="https://app.rarible.com/crypthodl/collectibles" target="_blank">https://app.rarible.com/crypthodl</a><br></br></p>
@@ -59,7 +60,6 @@ export default class Token extends React.Component {
             
           </div>
         </div>
-          ETH SIGNED MESSAGE :<a href="https://etherscan.io/verifySig/2359" target="_blank">https://etherscan.io/verifySig/2359</a>
       </Section>
     </main>
     )
@@ -69,9 +69,8 @@ const Section = styled.section`
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-
     width: 100%;
-
+    display : inline-block;
 
 .column {
     display: flex;
@@ -80,12 +79,11 @@ const Section = styled.section`
     flex: 1;
     }
 .about-section{
-    padding-top : 30px;
-    padding-bottom : 188px;
     color : #FFF;
+    padding : 20px 40px;
   }
   .logo{
-    max-width : 550px;
+    max-width : 100%;
     margin : auto;
     display : block;
   }
