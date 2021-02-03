@@ -57,7 +57,7 @@ background-size: cover;
 height: 100%;
 width: 100%;
 .about-section{
-    padding-top : 30px;
+    padding-top : 15px;
     color : #FFF;
   }
   .logo{
@@ -67,8 +67,6 @@ width: 100%;
   }
   .one-col{
     text-align : justify;
-    padding-top : 15px;
-    padding-bottom : 20px;
     margin-left : -50px;
     margin-right : -50px;
   }
@@ -77,8 +75,5 @@ width: 100%;
   }
   .two-col:last-child p{
     padding-right : 0px;
-  }
-  .how-section{
-    padding-top : 60px;
   }
 `
