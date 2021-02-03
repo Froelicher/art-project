@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Parallax from 'react-springy-parallax'
 import Log from '../../Log';
 import Header from '../../Header';
+import CryptHODL from '../Token/img/CryptHODL-logo.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 
@@ -70,27 +71,37 @@ export default class Home extends React.Component {
       display : 'inline-block'
     }
 
+
     return (
         <Parallax ref="parallax" pages={4}>
 
-          <Parallax.Layer offset={0} speed={1} style={{ backgroundColor: '#243B4A' }} />
-          <Parallax.Layer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
-          <Parallax.Layer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
-          <Parallax.Layer offset={3} speed={1} style={{ backgroundColor: '#FFF' }} />
+          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundColor: '#993B4A' }} />
+          <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundColor: '#805E73' }} />
+          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundColor: '#87BCDE' }} />
+          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundColor: '#FFF' }} />
 
           <Parallax.Layer
+                factor={1}
                 offset={0}
                 speed={0.5}
                 style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
-                <h1>MrCryptHODL - Cryptoart 'n' NFT</h1>
+                <Section>
+                  <div class="one-col">
+                    <h1>MrCryptHODL - Cryptoart 'n' NFT</h1>
+                  </div>
+                  <div class="one-col">
+                    <h3 class="sub-title-home">L'art à la Boran Sonmez ma LEGUEU</h3>
+                  </div>
+                </Section>
                 <div style={buttonBottom}>
                   <p>Go to bottom</p>
                 </div>
             </Parallax.Layer>
           <main>
           <Parallax.Layer
+                factor={1}
                 offset={1}
                 speed={0.5}
                 style={styles}
@@ -102,12 +113,15 @@ export default class Home extends React.Component {
                 <div class="one-col">
                   <h2 style={title_page}>Cryptoart and NFT ?</h2>
                 </div>
-                <div  class="two-col">
+                <div  class="three-col">
+                  <img src={CryptHODL} class="img-whatis"></img>
+                </div>
+                <div  class="three-col">
                   <h4>Non-fungible token</h4>
                   <p>NFT stands for non-fungible tokens like ERC-721 (a smart contract standard) tokens which are hosted on Ethereum’s own blockchain. NFTs are unique digital items such as collectibles or artworks or game items. As an artist, by tokenizing your work you both ensure that it is unique and brand it as your work. The actual ownership is blockchain-managed.
                   </p>
                 </div>
-                <div class="two-col">
+                <div class="three-col">
                   <h4>Non-fungible token</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices vestibulum lorem, id tempor risus mattis vitae.
                     Proin egestas ut eros ut vehicula. Quisque sit amet enim congue erat laoreet accumsan. 
@@ -140,6 +154,7 @@ export default class Home extends React.Component {
             </div>
             </Parallax.Layer>
             <Parallax.Layer
+                factor={1}
                 offset={2}
                 speed={0.5}
                 style={styles}
@@ -162,6 +177,7 @@ export default class Home extends React.Component {
             </Parallax.Layer>
             
             <Parallax.Layer
+                factor={1}
                 offset={3}
                 speed={0.5}
                 style={styles}
@@ -211,12 +227,21 @@ const ImgRibbon = styled.img`
 
 const Section = styled.section`
 
+  .img-whatis{
+    width : 70%;
+    margin : auto;
+    display : block;
+  }
+
   .whatis-section{
     padding-top : 30px;
   }
-  .one-col{
-    width : 100%;
+
+  .sub-title-home{
+    text-align : center;
+    margin-top : 20px;
   }
+  
   .two-col{
     width : 49%;
     display : inline-block;

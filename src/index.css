@@ -41,7 +41,15 @@ nav ul li a {
   color: white;
   text-decoration: none;
 }
+
+img{
+  max-width : 100%;
+}
+
 .container{
   padding-top : 64px;
 }
 
+.one-col{
+  width : 100%;
+}

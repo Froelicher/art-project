@@ -17,8 +17,8 @@ export default class Token extends React.Component {
       
     }
     return (
-    <main>
-      <Section style={backgroundPage}>
+    <main style={backgroundPage}>
+      <Section>
         <div class="column">
           <div class="container">
             <div class="about-section">
