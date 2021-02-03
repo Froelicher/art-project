@@ -80,10 +80,10 @@ body, html {
   grid-column-end: -1;
 }
 a {
-  color: #2c87f0;
+  color: #00ff15;
 }
 a:visited {
-  color: rgb(7, 221, 43);
+  color: rgb(22, 233, 57);
 }
 a:hover, a:active, a:focus {
   color:rgb(21, 255, 0);
