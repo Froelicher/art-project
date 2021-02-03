@@ -10,7 +10,10 @@ import { OrderSide } from 'opensea-js/lib/types';
 import SalePrice from '../common/SalePrice';
 
 const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
+  width : 100%;
   min-width: 200px;
+  background : none;
+  border : none;
   img {
     height: 200px;
     max-width: 100%;
@@ -22,6 +25,31 @@ const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
   a h5.card-title{
     color : #000;
     text-align : center;
+    margin-bottom : 0px;
+  }
+
+  .list-group-item{
+    background : none;
+    text-align : center;
+    padding : 0;
+  }
+
+  .card-body{
+    padding-bottom : 0px;
+    padding-top : 10px;
+  }
+
+  .card-footer{
+    background : none;
+    color : #fff;
+    padding : 0px;
+  }
+
+  .card-footer .text-muted{
+    color : #fff !important;
+    text-align : center;
+    margin : auto;
+    display : block;
   }
 `
 
@@ -136,20 +164,18 @@ export default class Asset extends React.Component {
     console.log("ICI : ", asset)
     const owner = asset.owner
     return (
-      <div>
       <Card>
         <AssetMetadata asset={asset} /> 
         
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            Owned by {owner.user.username}
+            Owned by <b>{owner.user.username}</b>
           </li>
         </ul>
         <div className="card-footer">
-          <small className="text-muted">Collection : {asset.assetContract.name}</small>
+          <small className="text-muted">Collection : <b>{asset.assetContract.name}</b></small>
         </div>
       </Card>
-      </div>
     )
   }
 }

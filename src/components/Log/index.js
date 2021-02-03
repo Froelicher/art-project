@@ -185,11 +185,6 @@ export default class Log extends React.Component {
         {assets != null
         
           ? <React.Fragment>
-              <Header>
-                <div class="title-section">
-                  <h2>Recent activity</h2>
-                </div>
-              </Header>
               <div className="card-deck">
                 {assets.map((asset, i) => {
                   if(i <= 2)
