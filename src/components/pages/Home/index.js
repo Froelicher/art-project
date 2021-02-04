@@ -75,13 +75,12 @@ export default class Home extends React.Component {
 
 
     return (
-        <Parallax ref="parallax" pages={5}>
+        <Parallax ref="parallax" pages={4}>
 
           <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})` }} />
           <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})` }} />
           <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})` }} />
           <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})` }} />
-          <Parallax.Layer factor={1} offset={4} speed={0} style={{ backgroundImage : `url(${Background})` }} />
 
           <Parallax.Layer
                 factor={1}
@@ -185,38 +184,6 @@ export default class Home extends React.Component {
                   <p class="layerParallax">Go to bottom</p>
                 </div>
             </Parallax.Layer>
-            
-            <Parallax.Layer
-                factor={1}
-                offset={4}
-                speed={0.5}
-                style={styles}
-                onClick={() => this.refs.parallax.scrollTo(0)}>
-                <Section>
-                  <div class="one-col">
-                    <div class="title-section">
-                      <h2>About me</h2>
-                    </div>
-                  </div>
-                  <div class="one-col">
-                    <div class="about-section">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper quam nec orci semper, in aliquet diam tempor. 
-                        Donec erat mauris, facilisis interdum pulvinar non, dapibus nec ipsum. Maecenas imperdiet pharetra ornare. 
-                        Fusce imperdiet mi sed mattis ornare. Praesent gravida lacus ipsum, in facilisis tortor sodales nec. In laoreet finibus lorem, laoreet tincidunt purus. 
-                        Nunc in quam ut diam vulputate condimentum. Nam sit amet dolor posuere lorem volutpat mattis vitae sit amet nisl. Donec vestibulum volutpat pulvinar. 
-                        Nulla facilisi. Vestibulum ultrices tempus nibh non facilisis. Vestibulum id accumsan metus.</p>
-                      <p>
-                      Ut ultrices tincidunt velit, ut interdum odio auctor non. Donec a urna mi. Integer congue semper turpis at feugiat. 
-                      Fusce et arcu vitae lacus interdum fermentum nec ac lectus. Fusce cursus neque est, id tempus lacus ultrices vitae. Vestibulum in hendrerit elit, at dictum nisi. 
-                      Cras pulvinar, justo rutrum mattis pulvinar, sapien odio accumsan magna, nec tincidunt nulla ligula id orci. Mauris non sem magna.
-                      </p>
-                    </div>
-                  </div>
-                </Section>
-                <div style={buttonBottom}>
-                  <p class="layerParallax">Go to bottom</p>
-                </div>
-              </Parallax.Layer>
           </main>
         </Parallax>
     )
