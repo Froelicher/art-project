@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import Parallax from 'react-springy-parallax'
 import Log from '../../Log';
 import Header from '../../Header';
-import CryptHODL from '../Token/img/CryptHODL-logo.png';
+import CryptHODL from '../Token/img/Short-Squeeze-2.gif';
+import Background from './img/Cryptoart.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
-
+import CryptArt from './img/Crypthodl-cryptoart.png';
+import CryptArt2 from './img/Crypthodl2-cryptoart.png';
 export default class Home extends React.Component {
 
   state = {
@@ -75,24 +77,28 @@ export default class Home extends React.Component {
     return (
         <Parallax ref="parallax" pages={4}>
 
-          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundColor: '#993B4A' }} />
-          <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundColor: '#805E73' }} />
-          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundColor: '#87BCDE' }} />
-          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundColor: '#FFF' }} />
+          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})` }} />
+          <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})` }} />
+          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})` }} />
+          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})` }} />
+          <Parallax.Layer factor={1} offset={4} speed={0} style={{ backgroundImage : `url(${Background})` }} />
 
           <Parallax.Layer
                 factor={1}
                 offset={0}
-                speed={0.5}
+                speed={0.1}
                 style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
                 <Section>
+                <div class="floating">
+                <img src={CryptArt} class="logo"></img>
+              </div>
                   <div class="one-col">
                     <h1>MrCryptHODL - Cryptoart 'n' NFT</h1>
                   </div>
                   <div class="one-col">
-                    <h3 class="sub-title-home">L'art à la Boran Sonmez ma LEGUEU</h3>
+                    <h4 class="sub-title-home">Physical and Digital cryptoarts with proof of ownership stored on the Ethereum blockchain.</h4>
                   </div>
                 </Section>
                 <div style={buttonBottom}>
@@ -103,48 +109,23 @@ export default class Home extends React.Component {
           <Parallax.Layer
                 factor={1}
                 offset={1}
-                speed={0.5}
+                speed={0.2}
                 style={styles}
                 class="layerParallax"
                 onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
             <Section>
             <div class="container">
               <div class="whatis-section">
-                <div class="one-col">
-                  <h2 style={title_page}>Cryptoart and NFT ?</h2>
-                </div>
-                <div  class="three-col">
+                <div  class="two-col">
                   <img src={CryptHODL} class="img-whatis"></img>
                 </div>
-                <div  class="three-col">
-                  <h4>Non-fungible token</h4>
-                  <p>NFT stands for non-fungible tokens like ERC-721 (a smart contract standard) tokens which are hosted on Ethereum’s own blockchain. NFTs are unique digital items such as collectibles or artworks or game items. As an artist, by tokenizing your work you both ensure that it is unique and brand it as your work. The actual ownership is blockchain-managed.
+                <div class="two-col">
+                  <h4>CryptArt NFTs are digital arts inspired by current events in the world of Cryptocurrency</h4>
+                  <p>The "CryptArt" are the NFT cryptoart of MrCryptHODL, they are inspired by current events in the cryptocurrency world, they are limited editions produced at 12 pieces by "CryptArt", they are based on the ERC-1155 <a href="http://localhost:3000/Token" target="_blank">CryptArt(CART)</a> Token and available on Rarible
                   </p>
-                </div>
-                <div class="three-col">
-                  <h4>Non-fungible token</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices vestibulum lorem, id tempor risus mattis vitae.
-                    Proin egestas ut eros ut vehicula. Quisque sit amet enim congue erat laoreet accumsan. 
-                    Praesent volutpat neque eu erat venenatis, ac maximus lectus volutpat. Duis accumsan diam a lacinia porttitor. Cras nec augue nec nunc ultricies consectetur.
-                    Praesent sed sem augue. Nam sagittis quis sem quis auctor. Nunc efficitur nisl ultricies, viverra tellus non, pellentesque magna. Nulla varius porttitor velit.
-                  </p>
-                </div>
-              </div>
-              <div class="how-section">
-                <div class="one-col">
-                  <h2 style={title_page}>How to collect digital art ?</h2>
-                </div>
-                <div class="three-col">
-                  <h4>DISCOVER TOKENIZED DIGITAL ART.</h4>
-                  <p>Artists issue authenticated single edition digital artworks. These are certified on the Ethereum blockchain to prevent forgery and provide historical provenance.</p>
-                </div>
-                <div class="three-col">
-                  <h4>BUYING & SELLING</h4>
-                  <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
-                </div>
-                <div class="three-col">
-                  <h4>SHOWCASE YOUR COLLECTION</h4>
-                  <p>Customize your profile to show off your art collection to patrons around the world. Display your works in a VR gallery, digital display, or anywhere else you like.</p>
+                  <p>All auctions start on Rarible, you can also bid on OpenSea</p>
+                <p>Rarible Collection :<br></br> <a href="https://app.rarible.com/cryptart" target="_blank">https://app.rarible.com/cryptart</a><br></br></p>
+                <p>OpenSea Collection :<br></br> <a href="https://opensea.io/collection/cryptart" target="_blank">https://opensea.io/collection/cryptart</a><br></br></p>
                 </div>
               </div>
             </div>
@@ -153,10 +134,39 @@ export default class Home extends React.Component {
                   <p class="layerParallax">Go to bottom</p>
             </div>
             </Parallax.Layer>
+
             <Parallax.Layer
                 factor={1}
                 offset={2}
-                speed={0.5}
+                speed={0.3}
+                style={styles}
+                class="layerParallax"
+                onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
+            <Section>
+            <div class="container">
+              <div class="whatis-section">
+                <div  class="two-col">
+                  <img src={CryptArt2} class="img-whatis"></img>
+                </div>
+                <div class="two-col">
+                  <h4>CryptHODL Cryptoarts are Bitcoin collectibles produced in limited edition most often of only 50 pieces.</h4>
+                  <p>The "CryptHODL" are physical cryptoarts produced at 50 coins per collection delivered with their certificates of authenticity and NFT version based on the Token ERC721 <a href="http://localhost:3000/Token" target="_blank">CryptHODL (CHODL)</a>, they are available on Bitcointalk Forum when they are released.
+                  </p>
+                  <p>All auctions start on Bitcointalk</p>
+                <p>Bitcointalk Thread :<br></br> <a href="hhttps://bitcointalk.org/index.php?topic=5310488.0" target="_blank">https://bitcointalk.org/index.php?topic=5310488.0</a><br></br></p>
+                </div>
+              </div>
+            </div>
+            </Section>
+            <div style={buttonBottom}>
+                  <p class="layerParallax">Go to bottom</p>
+            </div>
+            </Parallax.Layer>
+
+            <Parallax.Layer
+                factor={1}
+                offset={3}
+                speed={0.4}
                 style={styles}
                 onClick={() => this.refs.parallax.scrollTo(3)}>
                 <Section>
@@ -178,7 +188,7 @@ export default class Home extends React.Component {
             
             <Parallax.Layer
                 factor={1}
-                offset={3}
+                offset={4}
                 speed={0.5}
                 style={styles}
                 onClick={() => this.refs.parallax.scrollTo(0)}>
@@ -228,7 +238,7 @@ const ImgRibbon = styled.img`
 const Section = styled.section`
 
   .img-whatis{
-    width : 70%;
+    width : 80%;
     margin : auto;
     display : block;
   }
@@ -243,7 +253,7 @@ const Section = styled.section`
   }
   
   .two-col{
-    width : 49%;
+    width : 50%;
     display : inline-block;
     padding : 20px 0px;
     height : 100%;
@@ -276,5 +286,8 @@ const Section = styled.section`
     font-size : 10pt;
     color : #000;
     font-weight : 700;
+  }
+  .logo{
+    max-width : 100%;
   }
 `

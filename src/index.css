@@ -4,8 +4,13 @@
 body {
   font-family: 'Trispace', sans-serif;
   font-size : 18px;
-  color: rgb(87, 87, 87);
+  color: rgb(255, 255, 255);
   background-color: white;
+}
+h4 {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size : 16px;
+  color: rgb(255, 255, 255);
 }
 h2, h3 {
   font-family: 'Press Start 2P';
@@ -26,8 +31,10 @@ a {
 nav ul {
   list-style: none;
   display: flex;
-  background-color: black;
-  margin-bottom: 20px;
+  font-family: 'Press Start 2P';
+  font-size : 17px;
+  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: 10px;
   position : fixed;
   z-index: 10;
   width : 100%;
@@ -52,4 +59,13 @@ img{
 
 .one-col{
   width : 100%;
+}
+@keyframes floating { 
+  0% { transform: translate(0,  0px); } 
+  50%  { transform: translate(0, 15px); } 
+  100%   { transform: translate(0, -0px); }     
+} 
+body, html {
+height: 100%;
+margin: 0;
 }
