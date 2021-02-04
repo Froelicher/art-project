@@ -35,9 +35,9 @@ export default class Home extends React.Component {
 
   render() {
     const styles = {
-      fontFamily: 'Menlo-Regular, Menlo, monospace',
-      fontSize: 14,
-      lineHeight: '18px',
+
+      fontSize: 18,
+      lineHeight: '22px',
       color: 'white',
       display: 'flex', alignItems: 'center', justifyContent: 'center'
     }
@@ -120,7 +120,7 @@ export default class Home extends React.Component {
                   <img src={CryptHODL} class="img-whatis"></img>
                 </div>
                 <div class="two-col">
-                  <h4>CryptArt NFTs are digital arts inspired by current events in the world of Cryptocurrency</h4>
+                  <h3>CryptArt NFTs are digital arts inspired by current events in the world of Cryptocurrency</h3>
                   <p>The "CryptArt" are the NFT cryptoart of MrCryptHODL, they are inspired by current events in the cryptocurrency world, they are limited editions produced at 12 pieces by "CryptArt", they are based on the ERC-1155 <a href="http://localhost:3000/Token" target="_blank">CryptArt(CART)</a> Token and available on Rarible
                   </p>
                   <p>All auctions start on Rarible, you can also bid on OpenSea</p>
@@ -149,7 +149,7 @@ export default class Home extends React.Component {
                   <img src={CryptArt2} class="img-whatis"></img>
                 </div>
                 <div class="two-col">
-                  <h4>CryptHODL Cryptoarts are Bitcoin collectibles produced in limited edition most often of only 50 pieces.</h4>
+                  <h3>CryptHODL Cryptoarts are Bitcoin collectibles produced in limited edition most often of only 50 pieces.</h3>
                   <p>The "CryptHODL" are physical cryptoarts produced at 50 coins per collection delivered with their certificates of authenticity and NFT version based on the Token ERC721 <a href="http://localhost:3000/Token" target="_blank">CryptHODL (CHODL)</a>, they are available on Bitcointalk Forum when they are released.
                   </p>
                   <p>All auctions start on Bitcointalk</p>
