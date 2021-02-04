@@ -75,7 +75,7 @@ export default class Home extends React.Component {
 
 
     return (
-        <Parallax ref="parallax" pages={4}>
+        <Parallax ref="parallax" pages={5}>
 
           <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})` }} />
           <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})` }} />
