@@ -2,6 +2,7 @@ import React from 'react';
 import Home from '../pages/Home';
 import MyArt from '../pages/MyArt';
 import Token from '../pages/Token';
+import AssetPage from '../pages/AssetPage';
 import Collectibles from '../pages/Collectibles';
 import Contact from '../pages/Contact';
 import { Switch, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ export default class Main extends React.Component {
           <Route exact path='/Token' component={Token}></Route>
           <Route exact path='/Collectibles' component={Collectibles}></Route>
           <Route exact path='/Contact' component={Contact}></Route>
+          <Route exact path='/asset/:tokenAddress/:tokenId' component={AssetPage}></Route>
         </Switch>
       </div>
     )

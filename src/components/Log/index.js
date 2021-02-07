@@ -45,7 +45,6 @@ export default class Log extends React.Component {
       
     }, this.state.page)
 
-    console.log('ORDERS : ', orders);
     this.setState({ orders, total: count})
     
   }
@@ -57,7 +56,6 @@ export default class Log extends React.Component {
       //tokenAdress : '0x495f947276749ce646f68ac8c248420045cb7b5e',
       tokenId : null,
     }, this.state.page)
-    console.log('ASSETS : ', assets);
     this.setState({ assets, total : count});
   }
 
@@ -119,7 +117,6 @@ export default class Log extends React.Component {
     const { page, total } = this.state
     const ordersPerPage = this.props.seaport.api.pageSize
     const noMorePages = page*ordersPerPage >= total
-    console.log('ici : ' + total)
     return (
       <nav>
         <ul className="pagination justify-content-center">
