@@ -9,7 +9,8 @@ import { connectWallet } from '../../constants';
 export default class Log extends React.Component {
   static propTypes = {
     seaport: PropTypes.object.isRequired,
-    accountAddress: PropTypes.string
+    accountAddress: PropTypes.string,
+    assetContractAddress: PropTypes.string
   };
 
   state = {
@@ -29,15 +30,15 @@ export default class Log extends React.Component {
   }
 
   async fetchData() {
-    const { accountAddress } = this.props
+    const { accountAddress, assetContractAddress } = this.props
     const { orders, count } = await this.props.seaport.api.getOrders({
       maker: this.state.onlyByMe ? accountAddress : undefined,
       owner: this.state.onlyForMe ? accountAddress : undefined,
       side: this.state.side,
       bundled: this.state.onlyBundles ? true : undefined,
       // Possible query options:
-      //asset_contract_address : '0x91b16d509aa3377a526cd0794b8ff7dcfc84fcdf',
-      asset_contract_address : '0x495f947276749ce646f68ac8c248420045cb7b5e'
+      asset_contract_address : assetContractAddress,
+      //asset_contract_address : '0x495f947276749ce646f68ac8c248420045cb7b5e'
       // 'taker'
       //token_id : '43181488428587264351855320964023839419292599949489173029142631053139820675073'
       //token_ids
@@ -50,13 +51,15 @@ export default class Log extends React.Component {
   }
 
   async fetchDataAssets(){
-    const { accountAddress } = this.props
+    const { accountAddress, assetContractAddress } = this.props
     const { assets, count } = await this.props.seaport.api.getAssets({
-      asset_contract_address : '0x91b16d509aa3377a526cd0794b8ff7dcfc84fcdf',
+      asset_contract_address : assetContractAddress,
+      //asset_contract_address : '0x91b16d509aa3377a526cd0794b8ff7dcfc84fcdf',
       //tokenAdress : '0x495f947276749ce646f68ac8c248420045cb7b5e',
       tokenId : null,
     }, this.state.page)
     this.setState({ assets, total : count});
+    console.log(this.state.assets);
   }
 
   paginateTo(page) {

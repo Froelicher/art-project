@@ -64,7 +64,8 @@ export default class Asset extends React.Component {
     currentAccount: PropTypes.object,
     asset: PropTypes.object.isRequired,
     seaport: PropTypes.object.isRequired,
-    accountAddress: PropTypes.string
+    accountAddress: PropTypes.string,
+    assetContractAddress : PropTypes.string
   }
 
   onError(error) {
@@ -169,7 +170,7 @@ export default class Asset extends React.Component {
         
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            Owned by <b>{owner.user.username}</b>
+            Owned by <b>{owner.user == null ? owner.address.charAt(7) : owner.user.username}</b>
           </li>
         </ul>
         <div className="card-footer">

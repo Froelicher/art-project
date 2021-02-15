@@ -66,7 +66,7 @@ export default class Home extends React.Component {
     const title_page_center = {
       fontSize: 42,
       textAlign: "center",
-      marginBottom: "50px"
+      marginBottom: "20px"
     }
 
     const one_page = {
@@ -149,6 +149,15 @@ export default class Home extends React.Component {
                   <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
                 </div>
               </div>
+              <div class="whatis-section">
+                <div  class="one-col">
+                  <h1>What is Izumi NFT Gallery ?</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vulputate dolor id ornare bibendum. Nam iaculis purus sed vestibulum tincidunt. 
+                    Etiam eleifend ipsum sed ultrices pulvinar. Sed non nulla a augue semper accumsan vitae non nunc. 
+                    Quisque est massa, pharetra in faucibus viverra, venenatis egestas nulla</p>
+                  
+                </div>
+              </div>
             </div>
             </Section>
             <div style={buttonBottom}>
@@ -165,17 +174,23 @@ export default class Home extends React.Component {
                 onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
             <Section>
             <div class="container">
-              <div class="whatis-section">
-                <div  class="two-col">
-                  <img src={CryptArt2} class="img-whatis"></img>
-                </div>
-                <div class="two-col">
-                  <h3>CryptHODL Cryptoarts are Bitcoin collectibles produced in limited edition most often of only 50 pieces.</h3>
-                  <p>The "CryptHODL" are physical cryptoarts produced at 50 coins per collection delivered with their certificates of authenticity and NFT version based on the Token ERC721 <a href="http://localhost:3000/Token" target="_blank">CryptHODL (CHODL)</a>, they are available on Bitcointalk Forum when they are released.
-                  </p>
-                  <p>All auctions start on Bitcointalk</p>
-                <p>Bitcointalk Thread :<br></br> <a href="hhttps://bitcointalk.org/index.php?topic=5310488.0" target="_blank">https://bitcointalk.org/index.php?topic=5310488.0</a><br></br></p>
-                </div>
+              <div class="one-col" style={one_page}>
+                <h2 style={title_page_center}>My collection (Items I own)</h2>
+              </div>
+              <div class="one-col" style={one_page}>
+                <Log
+                seaport={this.seaport}
+                accountAddress={this.state.accountAddress}
+                assetContractAddress={'0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0'} />
+              </div>
+              <div class="one-col" style={one_page}>
+                <h2 style={title_page_center}>My lasts creations</h2>
+              </div>
+              <div class="one-col" style={one_page}>
+                <Log
+                seaport={this.seaport}
+                accountAddress={this.state.accountAddress}
+                assetContractAddress={'0xc233baa25ae0cadb5928550ba437acb2af637f77'} />
               </div>
             </div>
             </Section>
@@ -198,7 +213,8 @@ export default class Home extends React.Component {
                     <div class="one-col" style={one_page}>
                       <Log
                       seaport={this.seaport}
-                      accountAddress={this.state.accountAddress} />
+                      accountAddress={this.state.accountAddress} 
+                      assetContractAddress={'0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0'}/>
                     </div>
                   </div>
                 </Section>
@@ -239,13 +255,17 @@ const Section = styled.section`
     display : block;
   }
 
-  .whatis-section{
+  .whatis-section, .howto-section{
     margin-bottom : 50px;
     text-align : justify;
   }
 
   .howto-section p{
     text-align : justify;
+  }
+
+  .whatis-section .one-col h1, .howto-section .one-col h1{
+    font-size : 32px;
   }
 
   .sub-title-home{
@@ -264,7 +284,6 @@ const Section = styled.section`
   .two-col{
     width : 50%;
     display : inline-block;
-    padding : 20px 0px;
     height : 100%;
     vertical-align : top;
   }
