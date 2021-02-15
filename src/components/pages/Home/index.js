@@ -4,7 +4,8 @@ import Parallax from 'react-springy-parallax'
 import Log from '../../Log';
 import Header from '../../Header';
 import CryptHODL from '../Token/img/Short-Squeeze-2.gif';
-import Background from './img/Cryptoart.png';
+import Background from './img/texture.png';
+import BackgroundGloss from './img/gloss.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 import CryptArt from './img/Crypthodl-cryptoart.png';
@@ -73,15 +74,25 @@ export default class Home extends React.Component {
       display : 'inline-block'
     }
 
+    const gloss = {
+      width : '100%',
+      position : 'fixed',
+      height : '478px',
+      background : 'url('+BackgroundGloss+') repeat-x',
+      zIndex : '11'
+    }
+
+
 
     return (
+      <React.Fragment>
+        {/*<div class="gloss" style={gloss}></div>*/}
         <Parallax ref="parallax" pages={4}>
-
-          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})` }} />
-          <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})` }} />
-          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})` }} />
-          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})` }} />
-
+          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(244, 167, 185)', backgroundRepeat : 'repeat'}} />
+          <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(225, 107, 140)', backgroundRepeat : 'repeat' }} />
+          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(220, 159, 180)', backgroundRepeat : 'repeat' }} />
+          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(208, 16, 76)', backgroundRepeat : 'repeat' }} />
+    
           <Parallax.Layer
                 factor={1}
                 offset={0}
@@ -89,12 +100,13 @@ export default class Home extends React.Component {
                 style={header}
                 onClick={() => this.refs.parallax.scrollTo(1)}
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
+                
                 <Section>
-                <div class="floating">
-                <img src={CryptArt} class="logo"></img>
-              </div>
+                <div class="logo-header">
+                  <h1>宇衣安</h1>
+                </div>
                   <div class="one-col">
-                    <h1>MrCryptHODL - Cryptoart 'n' NFT</h1>
+                    <h1>Izumi - NFT Gallery</h1>
                   </div>
                   <div class="one-col">
                     <h4 class="sub-title-home">Physical and Digital cryptoarts with proof of ownership stored on the Ethereum blockchain.</h4>
@@ -115,16 +127,26 @@ export default class Home extends React.Component {
             <Section>
             <div class="container">
               <div class="whatis-section">
-                <div  class="two-col">
-                  <img src={CryptHODL} class="img-whatis"></img>
+                <div  class="one-col">
+                  <h1>What is an NFT ?</h1>
+                  <p>A non-fungible token (NFT) is a type of cryptographic token which represents something unique. 
+                    Or put another way, non-fungible tokens are not mutually interchangeable by their individual specification in the way that crypto assets such as Monero are. 
+                    Non-fungible tokens can be used to create verifiable digital scarcity. 
+                    NFTs are especially useful for any applications that require unique digital items such as digital art, digital-collectibles, and in-game items.</p>
+                  
+                </div>
+              </div>
+              <div class="howto-section">
+                <div class="one-col">
+                  <h1>How to collect ?</h1>
                 </div>
                 <div class="two-col">
-                  <h3>CryptArt NFTs are digital arts inspired by current events in the world of Cryptocurrency</h3>
-                  <p>The "CryptArt" are the NFT cryptoart of MrCryptHODL, they are inspired by current events in the cryptocurrency world, they are limited editions produced at 12 pieces by "CryptArt", they are based on the ERC-1155 <a href="http://localhost:3000/Token" target="_blank">CryptArt(CART)</a> Token and available on Rarible
-                  </p>
-                  <p>All auctions start on Rarible, you can also bid on OpenSea</p>
-                <p>Rarible Collection :<br></br> <a href="https://app.rarible.com/cryptart" target="_blank">https://app.rarible.com/cryptart</a><br></br></p>
-                <p>OpenSea Collection :<br></br> <a href="https://opensea.io/collection/cryptart" target="_blank">https://opensea.io/collection/cryptart</a><br></br></p>
+                  <h3>Discover tokenized digital art.</h3>
+                  <p>Artists issue authenticated single edition digital artworks. These are certified on the Ethereum blockchain to prevent forgery and provide historical provenance.</p>
+                </div>
+                <div class="two-col">
+                  <h3>Buying & Selling</h3>
+                  <p>Purchase at the asking price or make an offer by placing a bid. Once you own a piece you can resell it in the secondary market to other collectors.</p>
                 </div>
               </div>
             </div>
@@ -186,6 +208,7 @@ export default class Home extends React.Component {
             </Parallax.Layer>
           </main>
         </Parallax>
+        </React.Fragment>
     )
   }
 }
@@ -204,6 +227,12 @@ const ImgRibbon = styled.img`
 
 const Section = styled.section`
 
+  .logo-header h1{
+    font-size : 120px;
+    text-align : center;
+    display : block;
+  }
+
   .img-whatis{
     width : 80%;
     margin : auto;
@@ -211,12 +240,25 @@ const Section = styled.section`
   }
 
   .whatis-section{
-    padding-top : 30px;
+    margin-bottom : 50px;
+    text-align : justify;
+  }
+
+  .howto-section p{
+    text-align : justify;
   }
 
   .sub-title-home{
     text-align : center;
     margin-top : 20px;
+  }
+
+  .one-col{
+    text-align : center;
+  }
+
+  .one-col h1{
+    display: block;
   }
   
   .two-col{

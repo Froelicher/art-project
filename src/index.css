@@ -1,32 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
-  font-family: 'Trispace', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size : 18px;
   color: rgb(255, 255, 255);
   background-color: white;
 }
 h4 {
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: 'Reggae One', sans-serif;
   font-size : 18px;
   color: rgb(255, 255, 255);
 }
 
 h3 {
-  font-family: 'Press Start 2P';
+  font-family: 'Reggae One';
   font-size : 22px;
   color: rgb(255, 255, 255);
 }
 
 h2 {
-  font-family: 'Press Start 2P';
+  font-family: 'Reggae One';
   font-size : 28px;
   color: rgb(255, 255, 255);
 }
 
 h1 {
-  font-family: 'Press Start 2P';
+  font-family: 'Reggae One';
   font-size : 48px;
   color: rgb(255, 255, 255);
 }
@@ -38,13 +38,14 @@ a {
 nav ul {
   list-style: none;
   display: flex;
-  font-family: 'Press Start 2P';
-  font-size : 17px;
+  font-family: 'Reggae One';
+  font-size : 24px;
   background-color: rgba(0, 0, 0, 0);
   margin-bottom: 10px;
   position : fixed;
-  z-index: 10;
+  z-index: 12;
   width : 100%;
+  padding-left : 0px;
 }
 
 nav ul li {
@@ -52,8 +53,22 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: white !important;
   text-decoration: none;
+}
+
+nav ul li img{
+  max-height : 35px;
+}
+
+nav .under-logo{
+  position: absolute;
+  z-index: 12;
+  writing-mode: vertical-rl;
+  top: 80px;
+  left: -15px;
+  font-size: 30px;
+  font-family: 'Reggae One';
 }
 
 img{
