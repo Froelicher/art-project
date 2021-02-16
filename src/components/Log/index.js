@@ -242,7 +242,6 @@ export default class Log extends React.Component {
                 {orders.map((order, i) => {
                   if(i <= 2)
                     return <Asset {...this.props} key={i} order={order}  />
-                    console.log("ICI");
                 })}
               </div>
             </React.Fragment>

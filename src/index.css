@@ -62,7 +62,7 @@ nav ul li img{
 }
 
 nav .under-logo{
-  position: absolute;
+  position: fixed;
   z-index: 12;
   writing-mode: vertical-rl;
   top: 80px;

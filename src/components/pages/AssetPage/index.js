@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Log from '../../Log';
 import Header from '../../Header';
+import Background from '../Home/img/texture.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 
@@ -46,15 +47,22 @@ export default class AssetPage extends React.Component {
   
 
   render() {
+    const backgroundPage={
+      backgroundImage : `url(${Background})`,
+      backgroundColor : 'rgb(225, 107, 140)'
+    }
     const { asset } = this.state;
     return (
       <div>
         {asset != null
           ? <React.Fragment>
-              {console.log("asset : " + JSON.stringify(this.state.asset))}
+              <Section style={backgroundPage}>
+                <div class="container">
+                  {console.log("asset : " + JSON.stringify(this.state.asset))}
 
-              <h1>{ asset.name }</h1>
-
+                  <h1>{ asset.name }</h1>
+                </div>
+              </Section>
             </React.Fragment>
           : <h1>Not found</h1>
         }
@@ -76,6 +84,9 @@ const ImgRibbon = styled.img`
 `
 
 const Section = styled.section`
+
+  
+
   .how-section{
     padding-top : 60px;
     width : 80%;

@@ -5,7 +5,7 @@ import Header from '../../Header';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 import './index.css';
-import Background from './img/Cryptoart.png';
+import Background from '../Home/img/texture.png';
 import Mrcrypthodl from './img/Cryptoart Bitcoin.png';
 
 
@@ -13,15 +13,16 @@ export default class MyArt extends React.Component {
 
   render() {
     const backgroundPage={
-      backgroundImage : `url(${Background})`
+      backgroundImage : `url(${Background})`,
+      backgroundColor : 'rgb(225, 107, 140)'
     }
     return (
       <main>
         <Section style={backgroundPage}>
           <div class="container">
             <div class="about-section">
-              <div class="floating">
-                <img src={Mrcrypthodl} class="logo"></img>
+              <div class="title-page">
+                <h1>宇衣安</h1>
               </div>
               <div  class="one-col">
                 <h2>CryptoArt inspired by reality</h2>
@@ -51,11 +52,18 @@ export default class MyArt extends React.Component {
 }
 const Section = styled.section`
 
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;
+background-repeat: repeat;
+padding-bottom : 50px;
+
 height: 100%;
 width: 100%;
+
+.title-page h1{
+  display : block;
+  font-size : 72px;
+  padding : 50px 0px;
+}
+
 .about-section{
     padding-top : 15px;
     color : #FFF;
@@ -67,8 +75,6 @@ width: 100%;
   }
   .one-col{
     text-align : justify;
-    margin-left : -50px;
-    margin-right : -50px;
   }
   .two-col p{
     padding-right : 20px;
