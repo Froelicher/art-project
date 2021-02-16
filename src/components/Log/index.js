@@ -9,8 +9,11 @@ import { connectWallet } from '../../constants';
 export default class Log extends React.Component {
   static propTypes = {
     seaport: PropTypes.object.isRequired,
+    assetType: PropTypes.string.isRequired,
     accountAddress: PropTypes.string,
-    assetContractAddress: PropTypes.string
+    assetContractAddress: PropTypes.string,
+    owner : PropTypes.string,
+    orderby : PropTypes.string
   };
 
   state = {
@@ -25,8 +28,21 @@ export default class Log extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchData();
-    this.fetchDataAssets();
+    if(this.props.assetContractAddress != undefined){
+      if(this.props.assetType == 'order'){
+        this.fetchData();
+      }else{
+        this.fetchDataAssets();
+      }
+    }
+
+    if(this.props.owner != undefined){
+      if(this.props.assetType == 'order'){
+        this.fetchDataByOwner();
+      }else{
+        this.fetchDataAssetsByOwner();
+      }
+    }
   }
 
   async fetchData() {
@@ -50,16 +66,43 @@ export default class Log extends React.Component {
     
   }
 
-  async fetchDataAssets(){
+  async fetchDataByOwner() {
     const { accountAddress, assetContractAddress } = this.props
+    const { owner } = this.props
+    const { orders, count } = await this.props.seaport.api.getOrders({
+      maker: this.state.onlyByMe ? accountAddress : undefined,
+      owner: this.state.onlyForMe ? accountAddress : undefined,
+      side: this.state.side,
+      bundled: this.state.onlyBundles ? true : undefined,
+      // Possible query options:
+      //asset_contract_address : assetContractAddress,
+      owner : owner,
+      
+    }, this.state.page)
+
+    this.setState({ orders, total: count})
+    
+  }
+
+  async fetchDataAssets(){
+    const { accountAddress, assetContractAddress, orderby } = this.props
     const { assets, count } = await this.props.seaport.api.getAssets({
       asset_contract_address : assetContractAddress,
+      order_by : orderby,
       //asset_contract_address : '0x91b16d509aa3377a526cd0794b8ff7dcfc84fcdf',
       //tokenAdress : '0x495f947276749ce646f68ac8c248420045cb7b5e',
       tokenId : null,
     }, this.state.page)
     this.setState({ assets, total : count});
-    console.log(this.state.assets);
+  }
+
+  async fetchDataAssetsByOwner(){
+    const { owner, orderby } = this.props
+    const { assets, count } = await this.props.seaport.api.getAssets({
+      owner : owner,
+      order_by : orderby
+    }, this.state.page)
+    this.setState({assets});
   }
 
   paginateTo(page) {
@@ -180,20 +223,43 @@ export default class Log extends React.Component {
   render() {
     const { orders } = this.state
     const { assets } = this.state
+    var boolAsset = false
+    var boolOrder = false
+
+    if(orders != null){
+      boolOrder = true;
+    }else if (assets != null){
+      boolAsset = true;
+    }
+
     return (
       <div className="container py-3" id="Log">
-        {assets != null
+        {
         
+        boolOrder == true
           ? <React.Fragment>
               <div className="card-deck">
-                {assets.map((asset, i) => {
+                {orders.map((order, i) => {
                   if(i <= 2)
-                    return <Asset {...this.props} key={i} asset={asset}  />
+                    return <Asset {...this.props} key={i} order={order}  />
+                    console.log("ICI");
                 })}
               </div>
             </React.Fragment>
+        
+          :  boolAsset == true
+        
+            ? <React.Fragment>
+                <div className="card-deck">
+                  {assets.map((asset, i) => {
+                    if(i <= 2)
+                      return <Asset {...this.props} key={i} asset={asset}  />
+                    
+                  })}
+                </div>
+              </React.Fragment>
 
-          : <div className="text-center">Loading...</div>
+            : <div className="text-center">Loading...</div>
         }
 
         {/*orders != null

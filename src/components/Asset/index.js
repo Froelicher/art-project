@@ -62,17 +62,20 @@ export default class Asset extends React.Component {
 
   static propTypes = {
     currentAccount: PropTypes.object,
-    asset: PropTypes.object.isRequired,
+    asset: PropTypes.object,
+    order: PropTypes.object,
     seaport: PropTypes.object.isRequired,
     accountAddress: PropTypes.string,
-    assetContractAddress : PropTypes.string
+    assetContractAddress : PropTypes.string,
+    owner : PropTypes.string,
+    orderby: PropTypes.string
   }
 
   onError(error) {
     // Ideally, you'd handle this error at a higher-level component
     // using props or Redux
     this.setState({ errorMessage: error.message })
-    setTimeout(() => this.setState({errorMessage: null}), 3000)
+    setTimeout(() => this.setState({errorMessage: null}), 5000)
     throw error
   }
 
@@ -160,17 +163,39 @@ export default class Asset extends React.Component {
 
   render() {
     const { errorMessage } = this.state
-    const { asset } = this.props
+    var { asset } = this.props
+    const { order } = this.props
+    var owner = null
 
-    console.log("ICI : ", asset)
-    const owner = asset.owner
+    if(asset != null){
+      owner = asset.owner;
+    }
+
+    if(order != null){
+      owner = order.asset.owner;
+      asset = order.asset;
+    }
+
+    console.log(asset.tokenAddress);
+
+    var username = ''
+
+    if(owner.user == null || owner.user.username == null){
+      username = owner.address.substring(2,8);
+    }else if (owner.user.username == 'NullAddress'){
+      username = 'Multiple owner'
+    }else{
+      username = owner.user.username
+    }
+
     return (
+      
       <Card>
         <AssetMetadata asset={asset} /> 
         
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            Owned by <b>{owner.user == null ? owner.address.charAt(7) : owner.user.username}</b>
+            Owned by <b>{username}</b>
           </li>
         </ul>
         <div className="card-footer">

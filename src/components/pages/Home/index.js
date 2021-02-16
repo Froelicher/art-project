@@ -179,18 +179,20 @@ export default class Home extends React.Component {
               </div>
               <div class="one-col" style={one_page}>
                 <Log
-                seaport={this.seaport}
-                accountAddress={this.state.accountAddress}
-                assetContractAddress={'0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0'} />
+                  seaport={this.seaport}
+                  assetType='order'
+                  accountAddress={this.state.accountAddress}
+                  owner={'0x01e638b805108e7a2e928a1b0c263890f017a3b5'}/>
               </div>
               <div class="one-col" style={one_page}>
-                <h2 style={title_page_center}>My lasts creations</h2>
+                <h2 style={title_page_center}>My lasts critics</h2>
               </div>
               <div class="one-col" style={one_page}>
                 <Log
                 seaport={this.seaport}
+                assetType='order'
                 accountAddress={this.state.accountAddress}
-                assetContractAddress={'0xc233baa25ae0cadb5928550ba437acb2af637f77'} />
+                owner={'0x0c1b570912846d3b57bfa44cba915560b69b5382'} />
               </div>
             </div>
             </Section>
@@ -211,10 +213,12 @@ export default class Home extends React.Component {
                       <h2 style={title_page_center}>My lasts creations</h2>
                     </div>
                     <div class="one-col" style={one_page}>
-                      <Log
+                    <Log
                       seaport={this.seaport}
-                      accountAddress={this.state.accountAddress} 
-                      assetContractAddress={'0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0'}/>
+                      assetType='asset'
+                      accountAddress={this.state.accountAddress}
+                      //orderby='created_date'
+                      assetContractAddress={'0xc233baa25ae0cadb5928550ba437acb2af637f77'} />
                     </div>
                   </div>
                 </Section>
