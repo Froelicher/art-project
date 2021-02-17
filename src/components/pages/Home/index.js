@@ -190,7 +190,7 @@ export default class Home extends React.Component {
               <div class="one-col" style={one_page}>
                 <Log
                 seaport={this.seaport}
-                assetType='order'
+                assetType='asset'
                 accountAddress={this.state.accountAddress}
                 owner={'0x0c1b570912846d3b57bfa44cba915560b69b5382'} />
               </div>

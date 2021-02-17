@@ -170,7 +170,7 @@ export default class AssetPage extends React.Component {
 
     return (
       <div>
-        {asset != null && order != undefined
+        {asset != null
           ? <React.Fragment>
               <Section style={backgroundPage}>
                 <div class="container">
@@ -185,11 +185,13 @@ export default class AssetPage extends React.Component {
                       <img src={asset.imageUrlOriginal}></img>
                     </div>
                     <div class="two-col">
-                      { /* Title - Description - Owner - Creator - Price */ }
+                      { /* Title - Description - Owner - Creator - Price */ console.log(asset)}
+                      <p>Collection : {asset.assetContract.name}</p>
                       <p>{asset.description}</p>
                       <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
-                      <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p> 
-                      <p>Price : {console.log("ORDER : " + order)}
+                      <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
+                      {order != undefined
+                      ? <p>Price : {console.log("ORDER : " + order)}
                         {order.side === OrderSide.Buy
                           ? this.renderAcceptOfferButton(isOwner)
                           : null
@@ -198,6 +200,8 @@ export default class AssetPage extends React.Component {
                           ? this.renderBuyButton(!isOwner)
                           : null
                         }</p>
+                      : null
+                      }
                     </div>
                   </div>
                   {/*console.log("asset : " + JSON.stringify(asset)) */}
