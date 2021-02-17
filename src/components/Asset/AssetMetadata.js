@@ -6,7 +6,7 @@ export default class AssetMetadata extends React.Component {
 
     return (
       <React.Fragment>
-        {console.log(this.props)}
+        {console.log("oui : " + JSON.stringify(this.props))}
         <a rel="noopener noreferrer" className="text-center d-inline-block m-100" href={"/asset/"+asset.tokenAddress+"/"+asset.tokenId}>
           <img
             alt="Asset artwork"
