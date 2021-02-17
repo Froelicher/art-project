@@ -19,13 +19,15 @@ export default class AssetPage extends React.Component {
     asset: undefined,
     order: undefined,
     creatingOrder: false,
-    errorMessage: null
+    errorMessage: null,
+    seaport : null
   }
 
   constructor(props) {
     super(props)
     this.onChangeAddress()
     onNetworkUpdate(this.onChangeAddress)
+    this.fetchDataAsset()
   }
 
   onError(error) {
@@ -45,6 +47,7 @@ export default class AssetPage extends React.Component {
       this.setState({
         accountAddress: res[0]
       })
+      this.setState({seaport: this.seaport})
     })
   }
 
@@ -55,7 +58,7 @@ export default class AssetPage extends React.Component {
     }
     try {
       this.setState({ creatingOrder: true })
-      await this.seaport.fulfillOrder({ order, accountAddress })
+      await this.state.seaport.fulfillOrder({ order, accountAddress })
     } catch(error) {
       this.onError(error)
     } finally {
@@ -141,24 +144,20 @@ export default class AssetPage extends React.Component {
     }
   }
 
-  componentDidMount(){
-    this.fetchDataAsset();
-  }
-  
-
   render() {
+
     const backgroundPage={
       backgroundImage : `url(${Background})`,
       backgroundColor : 'rgb(225, 107, 140)'
     }
 
     const { asset, accountAddress, errorMessage, order } = this.state;
-    const isOwner = accountAddress && accountAddress.toLowerCase() === asset.owner.address.toLowerCase()
-
+    var isOwner = false;
 
     var usernameOwner = "";
 
     if(asset != null){
+      isOwner = accountAddress && accountAddress.toLowerCase() === asset.owner.address.toLowerCase()
       if(asset.owner.user == null || asset.owner.user.username == null){
         usernameOwner = asset.owner.address.substring(2,8);
       }else if (asset.owner.user.username == 'NullAddress'){
@@ -185,7 +184,7 @@ export default class AssetPage extends React.Component {
                       <img src={asset.imageUrlOriginal}></img>
                     </div>
                     <div class="two-col">
-                      { /* Title - Description - Owner - Creator - Price */ console.log(asset)}
+                      { /* Title - Description - Owner - Creator - Price */}
                       <p>Collection : {asset.assetContract.name}</p>
                       <p>{asset.description}</p>
                       <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
