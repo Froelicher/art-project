@@ -7,6 +7,7 @@ import BundleMetadata from './BundleMetadata'
 import styled from 'styled-components';
 import { connectWallet } from '../../constants';
 import { OrderSide } from 'opensea-js/lib/types';
+import Background from '../pages/Home/img/texture.png';
 import SalePrice from '../common/SalePrice';
 
 const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
@@ -57,29 +58,33 @@ export default class Asset extends React.Component {
 
   state = {
     errorMessage: null,
-    creatingOrder: false
+    creatingOrder: false,
+    orderState : null
   }
 
   static propTypes = {
     currentAccount: PropTypes.object,
     asset: PropTypes.object,
-    order: PropTypes.object,
+    order: PropTypes.shape({
+      makerAccount: PropTypes.object
+    }),
     seaport: PropTypes.object.isRequired,
     accountAddress: PropTypes.string,
     assetContractAddress : PropTypes.string,
     owner : PropTypes.string,
-    orderby: PropTypes.string
+    orderby: PropTypes.string,
+    singleAsset : false
   }
 
   onError(error) {
     // Ideally, you'd handle this error at a higher-level component
     // using props or Redux
     this.setState({ errorMessage: error.message })
-    setTimeout(() => this.setState({errorMessage: null}), 5000)
+    setTimeout(() => this.setState({errorMessage: null}), 3000)
     throw error
   }
 
-  /*async fulfillOrder() {
+  async fulfillOrder() {
     const { order, accountAddress } = this.props
     if (!accountAddress) {
       await connectWallet()
@@ -159,13 +164,30 @@ export default class Asset extends React.Component {
         {timeLeft.humanize()}
       </span>
     )
-  }*/
+  }
+
+  async fetchDataAsset(){
+    //const { accountAddress } = accountAddress
+    console.log("tokenAddress : " + this.props.match.params.tokenAddress);
+    console.log("tokenId : " + this.props.match.params.tokenId);
+    const singleAsset = await this.seaport.api.getAsset(this.props.match.params.tokenAddress, this.props.match.params.tokenId, 1);
+    this.setState({ asset : singleAsset});
+    if(singleAsset.orders.length > 0 && this.state.order === undefined){
+      this.setState({ order : singleAsset.orders[0]})
+    }
+  }
 
   render() {
     const { errorMessage } = this.state
-    var { asset } = this.props
+    var { asset, accountAddress } = this.props
     const { order } = this.props
     var owner = null
+
+    const backgroundPage={
+      backgroundImage : `url(${Background})`,
+      backgroundColor : 'rgb(225, 107, 140)',
+      minHeight : '100vh'
+    }
 
     if(asset != null){
       owner = asset.owner;
@@ -178,30 +200,82 @@ export default class Asset extends React.Component {
 
     console.log(asset.tokenAddress);
 
-    var username = ''
+    var usernameOwner = ''
 
     if(owner.user == null || owner.user.username == null){
-      username = owner.address.substring(2,8);
+      usernameOwner = owner.address.substring(2,8);
     }else if (owner.user.username == 'NullAddress'){
-      username = 'Multiple owner'
+      usernameOwner = 'Multiple owner'
     }else{
-      username = owner.user.username
+      usernameOwner = owner.user.username
     }
 
-    return (
-      
-      <Card>
-        <AssetMetadata asset={asset} /> 
-        
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            Owned by <b>{username}</b>
-          </li>
-        </ul>
-        <div className="card-footer">
-          <small className="text-muted">Collection : <b>{asset.assetContract.name}</b></small>
-        </div>
-      </Card>
-    )
+    const isOwner = accountAddress && accountAddress.toLowerCase() === owner.address.toLowerCase()
+
+    if(!this.props.singleAsset){
+      return (
+        <Card>
+          <AssetMetadata asset={asset} /> 
+          
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              Owned by <b>{usernameOwner}</b>
+            </li>
+          </ul>
+          <div className="card-footer">
+            <small className="text-muted">Collection : <b>{asset.assetContract.name}</b></small>
+          </div>
+        </Card>
+      )
+    }else{
+      return(
+        <div>
+        {asset != null
+          ? <React.Fragment>
+              <Section style={backgroundPage}>
+                <div class="container">
+                  <div class="asset-informations">
+                    <div class="two-col">
+                      { /*image*/ }
+                      <img src={asset.imageUrlOriginal}></img>
+                    </div>
+                    <div class="two-col">
+                      { /* Title - Description - Owner - Creator - Price */}
+                      <h1>{ asset.name }</h1>
+                      <h4>Collection</h4> 
+                      <p>{asset.assetContract.name}</p>
+                      <h4>Description</h4>
+                      <p>{asset.description === null
+                          ? "No description found"
+                          : asset.description
+                          }</p>
+                      <h4>Owner</h4>
+                      <p><img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
+                      {order != undefined
+                      ? <p>Price : {console.log("ORDER : " + order)}
+                        {order.side === OrderSide.Buy
+                          ? this.renderAcceptOfferButton(isOwner)
+                          : null
+                        }
+                        {order.side === OrderSide.Sell
+                          ? this.renderBuyButton(!isOwner)
+                          : null
+                        }</p>
+                      : null
+                      }
+                    </div>
+                  </div>
+                  {/*console.log("asset : " + JSON.stringify(asset)) */}
+                  {console.log("error : " + errorMessage)}
+
+                  
+                </div>
+              </Section>
+            </React.Fragment>
+          : <h1>Not found</h1>
+        }
+      </div>
+      )
+    }
   }
 }

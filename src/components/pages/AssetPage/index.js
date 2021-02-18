@@ -19,8 +19,7 @@ export default class AssetPage extends React.Component {
     asset: undefined,
     order: undefined,
     creatingOrder: false,
-    errorMessage: null,
-    seaport : null
+    errorMessage: null
   }
 
   constructor(props) {
@@ -34,7 +33,7 @@ export default class AssetPage extends React.Component {
     // Ideally, you'd handle this error at a higher-level component
     // using props or Redux
     this.setState({ errorMessage: error.message })
-    setTimeout(() => this.setState({errorMessage: null}), 5000)
+    setTimeout(() => this.setState({errorMessage: null}), 3000)
     throw error
   }
 
@@ -47,7 +46,6 @@ export default class AssetPage extends React.Component {
       this.setState({
         accountAddress: res[0]
       })
-      this.setState({seaport: this.seaport})
     })
   }
 
@@ -58,7 +56,7 @@ export default class AssetPage extends React.Component {
     }
     try {
       this.setState({ creatingOrder: true })
-      await this.state.seaport.fulfillOrder({ order, accountAddress })
+      await this.seaport.fulfillOrder({ order, accountAddress })
     } catch(error) {
       this.onError(error)
     } finally {
@@ -148,7 +146,8 @@ export default class AssetPage extends React.Component {
 
     const backgroundPage={
       backgroundImage : `url(${Background})`,
-      backgroundColor : 'rgb(225, 107, 140)'
+      backgroundColor : 'rgb(225, 107, 140)',
+      minHeight : '100vh'
     }
 
     const { asset, accountAddress, errorMessage, order } = this.state;
@@ -173,11 +172,6 @@ export default class AssetPage extends React.Component {
           ? <React.Fragment>
               <Section style={backgroundPage}>
                 <div class="container">
-                  <div class="title-page">
-                    <div class="one-col">
-                      <h1>{ asset.name }</h1>
-                    </div>
-                  </div>
                   <div class="asset-informations">
                     <div class="two-col">
                       { /*image*/ }
@@ -185,10 +179,16 @@ export default class AssetPage extends React.Component {
                     </div>
                     <div class="two-col">
                       { /* Title - Description - Owner - Creator - Price */}
-                      <p>Collection : {asset.assetContract.name}</p>
-                      <p>{asset.description}</p>
-                      <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
-                      <p>Owner : <img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
+                      <h1>{ asset.name }</h1>
+                      <h4>Collection</h4> 
+                      <p>{asset.assetContract.name}</p>
+                      <h4>Description</h4>
+                      <p>{asset.description === null
+                          ? "No description found"
+                          : asset.description
+                          }</p>
+                      <h4>Owner</h4>
+                      <p><img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
                       {order != undefined
                       ? <p>Price : {console.log("ORDER : " + order)}
                         {order.side === OrderSide.Buy
@@ -231,12 +231,16 @@ const ImgRibbon = styled.img`
 
 const Section = styled.section`
 
-.one-col{
-  text-align : left;
+h1{
+  padding-bottom : 30px;
 }
 
-.one-col h1{
-  display: block;
+.asset-informations{
+  margin-top : 50px;
+}
+
+.asset-informations h4{
+  text-decoration : underline;
 }
 
 .two-col{
@@ -244,7 +248,17 @@ const Section = styled.section`
   display : inline-block;
   height : 100%;
   vertical-align : top;
+  padding : 20px;
 }
+
+.two-col:first-child{
+  padding-left : 0px;
+}
+
+.two-col:last-child{
+  padding-right : 0px;
+}
+
 .two-col p{
   padding-right : 20px;
 }

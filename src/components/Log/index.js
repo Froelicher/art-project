@@ -13,7 +13,8 @@ export default class Log extends React.Component {
     accountAddress: PropTypes.string,
     assetContractAddress: PropTypes.string,
     owner : PropTypes.string,
-    orderby : PropTypes.string
+    orderby : PropTypes.string,
+    singleAsset : false
   };
 
   state = {
@@ -232,55 +233,69 @@ export default class Log extends React.Component {
       boolAsset = true;
     }
 
-    return (
-      <div className="container py-3" id="Log">
-        {
+    if(!this.props.singleAsset){
+      return (
         
-        boolOrder == true
-          ? <React.Fragment>
-              <div className="card-deck">
-                {orders.map((order, i) => {
-                  if(i <= 2)
-                    return <Asset {...this.props} key={i} order={order}  />
-                })}
-              </div>
-            </React.Fragment>
-        
-          :  boolAsset == true
-        
+        <div className="container py-3" id="Log">
+          {
+          
+          boolOrder == true
             ? <React.Fragment>
                 <div className="card-deck">
-                  {assets.map((asset, i) => {
+                  {orders.map((order, i) => {
                     if(i <= 2)
-                      return <Asset {...this.props} key={i} asset={asset}  />
-                    
+                      return <Asset {...this.props} key={i} order={order}  />
                   })}
                 </div>
               </React.Fragment>
+          
+            :  boolAsset == true
+          
+              ? <React.Fragment>
+                  <div className="card-deck">
+                    {assets.map((asset, i) => {
+                      if(i <= 2)
+                        return <Asset {...this.props} key={i} asset={asset}  />
+                      
+                    })}
+                  </div>
+                </React.Fragment>
 
-            : <div className="text-center">Loading...</div>
-        }
+              : <div className="text-center">Loading...</div>
+          }
 
-        {/*orders != null
-        
-        ? <React.Fragment>
-            <Header>
-              <div class="title-section">
-                <h2>Recent activity</h2>
+          {/*orders != null
+          
+          ? <React.Fragment>
+              <Header>
+                <div class="title-section">
+                  <h2>Recent activity</h2>
+                </div>
+              </Header>
+              <div className="card-deck">
+                {orders.map((order, i) => {
+                  if(i <= 2)
+                    return <Order {...this.props} key={i} order={order}  />
+                })}
               </div>
-            </Header>
-            <div className="card-deck">
-              {orders.map((order, i) => {
-                if(i <= 2)
-                  return <Order {...this.props} key={i} order={order}  />
-              })}
-            </div>
-          </React.Fragment>
+            </React.Fragment>
 
-        : <div className="text-center">Loading...</div>
-            */}
-      </div>
-    )
+          : <div className="text-center">Loading...</div>
+              */}
+        </div>
+      )
+    }else{
+      return(
+        <div>
+        {
+          boolOrder == true
+          ? <Asset {...this.props} order={order} />
+          : <Asset {...this.props} asset={asset} />
+        }
+        </div>
+        
+      )
+    }
   }
 }
 
