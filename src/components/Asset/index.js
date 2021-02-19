@@ -59,22 +59,23 @@ export default class Asset extends React.Component {
   state = {
     errorMessage: null,
     creatingOrder: false,
-    orderState : null
+    orderState : null,
+    order : null
   }
 
   static propTypes = {
     currentAccount: PropTypes.object,
-    asset: PropTypes.object,
-    order: PropTypes.shape({
-      makerAccount: PropTypes.object
-    }),
     seaport: PropTypes.object.isRequired,
     accountAddress: PropTypes.string,
     assetContractAddress : PropTypes.string,
+    token_id : PropTypes.string,
     owner : PropTypes.string,
     orderby: PropTypes.string,
-    singleAsset : false
+    singleAsset : PropTypes.bool,
+    order : PropTypes.object,
+    asset : PropTypes.object
   }
+
 
   onError(error) {
     // Ideally, you'd handle this error at a higher-level component
@@ -85,7 +86,7 @@ export default class Asset extends React.Component {
   }
 
   async fulfillOrder() {
-    const { order, accountAddress } = this.props
+    const { accountAddress, order } = this.props
     if (!accountAddress) {
       await connectWallet()
     }
@@ -102,6 +103,7 @@ export default class Asset extends React.Component {
   renderBuyButton(canAccept = true) {
     const { creatingOrder } = this.state
     const { accountAddress, order } = this.props
+    console.log(this.props)
     const buyAsset = async () => {
       if (accountAddress && !canAccept) {
         this.setState({
@@ -166,21 +168,10 @@ export default class Asset extends React.Component {
     )
   }
 
-  async fetchDataAsset(){
-    //const { accountAddress } = accountAddress
-    console.log("tokenAddress : " + this.props.match.params.tokenAddress);
-    console.log("tokenId : " + this.props.match.params.tokenId);
-    const singleAsset = await this.seaport.api.getAsset(this.props.match.params.tokenAddress, this.props.match.params.tokenId, 1);
-    this.setState({ asset : singleAsset});
-    if(singleAsset.orders.length > 0 && this.state.order === undefined){
-      this.setState({ order : singleAsset.orders[0]})
-    }
-  }
 
   render() {
     const { errorMessage } = this.state
-    var { asset, accountAddress } = this.props
-    const { order } = this.props
+    var { accountAddress, asset, order } = this.props
     var owner = null
 
     const backgroundPage={
@@ -193,24 +184,29 @@ export default class Asset extends React.Component {
       owner = asset.owner;
     }
 
-    if(order != null){
+    if(order != null && asset != null){
+      owner = asset.owner;
+    }else if(order != null && asset == null){
       owner = order.asset.owner;
-      asset = order.asset;
+      asset = order.asset
     }
-
-    console.log(asset.tokenAddress);
 
     var usernameOwner = ''
+    var isOwner = false;
 
-    if(owner.user == null || owner.user.username == null){
-      usernameOwner = owner.address.substring(2,8);
-    }else if (owner.user.username == 'NullAddress'){
-      usernameOwner = 'Multiple owner'
-    }else{
-      usernameOwner = owner.user.username
+    if(owner != null){
+      if(owner.user == null || owner.user.username == null){
+        usernameOwner = owner.address.substring(2,8);
+      }else if (owner.user.username == 'NullAddress'){
+        usernameOwner = 'Multiple owner'
+      }else{
+        usernameOwner = owner.user.username
+      }
+
+      isOwner = accountAddress && accountAddress.toLowerCase() === owner.address.toLowerCase()
     }
 
-    const isOwner = accountAddress && accountAddress.toLowerCase() === owner.address.toLowerCase()
+    
 
     if(!this.props.singleAsset){
       return (
@@ -231,8 +227,8 @@ export default class Asset extends React.Component {
       return(
         <div>
         {asset != null
-          ? <React.Fragment>
-              <Section style={backgroundPage}>
+          ? <React.Fragment> 
+            <Section style={backgroundPage}>
                 <div class="container">
                   <div class="asset-informations">
                     <div class="two-col">
@@ -252,7 +248,7 @@ export default class Asset extends React.Component {
                       <h4>Owner</h4>
                       <p><img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
                       {order != undefined
-                      ? <p>Price : {console.log("ORDER : " + order)}
+                      ? <p>Price : 
                         {order.side === OrderSide.Buy
                           ? this.renderAcceptOfferButton(isOwner)
                           : null
@@ -270,7 +266,7 @@ export default class Asset extends React.Component {
 
                   
                 </div>
-              </Section>
+            </Section>
             </React.Fragment>
           : <h1>Not found</h1>
         }
@@ -279,3 +275,46 @@ export default class Asset extends React.Component {
     }
   }
 }
+
+const Section = styled.section`
+
+h1{
+  padding-bottom : 30px;
+}
+
+.asset-informations{
+  margin-top : 50px;
+}
+
+.asset-informations h4{
+  text-decoration : underline;
+}
+
+.two-col{
+  width : 50%;
+  display : inline-block;
+  height : 100%;
+  vertical-align : top;
+  padding : 20px;
+}
+
+.two-col:first-child{
+  padding-left : 0px;
+}
+
+.two-col:last-child{
+  padding-right : 0px;
+}
+
+.two-col p{
+  padding-right : 20px;
+}
+.two-col:last-child p{
+  padding-right : 0px;
+}
+
+.profile_img{
+  max-height : 30px;
+}
+
+`  

@@ -12,9 +12,10 @@ export default class Log extends React.Component {
     assetType: PropTypes.string.isRequired,
     accountAddress: PropTypes.string,
     assetContractAddress: PropTypes.string,
+    token_id : PropTypes.string,
     owner : PropTypes.string,
     orderby : PropTypes.string,
-    singleAsset : false
+    singleAsset : PropTypes.bool
   };
 
   state = {
@@ -29,11 +30,15 @@ export default class Log extends React.Component {
   };
 
   componentDidMount() {
-    if(this.props.assetContractAddress != undefined){
-      if(this.props.assetType == 'order'){
-        this.fetchData();
+    if(this.props.assetContractAddress != null){
+      if(this.props.singleAsset == false){
+        if(this.props.assetType == 'order'){
+          this.fetchData();
+        }else{
+          this.fetchDataAssets();
+        }
       }else{
-        this.fetchDataAssets();
+          this.fetchDataAsset();
       }
     }
 
@@ -80,7 +85,6 @@ export default class Log extends React.Component {
       owner : owner,
       
     }, this.state.page)
-
     this.setState({ orders, total: count})
     
   }
@@ -90,8 +94,6 @@ export default class Log extends React.Component {
     const { assets, count } = await this.props.seaport.api.getAssets({
       asset_contract_address : assetContractAddress,
       order_by : orderby,
-      //asset_contract_address : '0x91b16d509aa3377a526cd0794b8ff7dcfc84fcdf',
-      //tokenAdress : '0x495f947276749ce646f68ac8c248420045cb7b5e',
       tokenId : null,
     }, this.state.page)
     this.setState({ assets, total : count});
@@ -104,6 +106,15 @@ export default class Log extends React.Component {
       order_by : orderby
     }, this.state.page)
     this.setState({assets});
+  }
+
+  async fetchDataAsset(){
+    const { assetContractAddress, token_id } = this.props
+    const singleAsset = await this.props.seaport.api.getAsset(assetContractAddress, token_id, 1);
+    this.setState({ assets : singleAsset});
+    if(singleAsset.orders.length > 0 && this.state.orders === undefined){
+      this.setState({ orders : singleAsset.orders[0]})
+    }
   }
 
   paginateTo(page) {
@@ -227,13 +238,22 @@ export default class Log extends React.Component {
     var boolAsset = false
     var boolOrder = false
 
-    if(orders != null){
+    if(orders != null && assets != null){
       boolOrder = true;
-    }else if (assets != null){
+      boolAsset = false;
+    }else if(orders != null && assets == null){
+      boolOrder = true;
+      boolAsset = false;
+    }
+    
+    if (assets != null){
       boolAsset = true;
+      boolOrder = false;
     }
 
-    if(!this.props.singleAsset){
+    console.log(assets)
+
+    if(this.props.singleAsset == false){
       return (
         
         <div className="container py-3" id="Log">
@@ -287,10 +307,19 @@ export default class Log extends React.Component {
     }else{
       return(
         <div>
+         { assets != null
+           ? console.log(assets.orders[0])
+           : null
+         } 
         {
-          boolOrder == true
-          ? <Asset {...this.props} order={order} />
-          : <Asset {...this.props} asset={asset} />
+          boolOrder == true && assets != null
+          ? <Asset {...this.props} order={orders} asset={assets}/>
+          : null
+        }
+        {
+          boolAsset == true && assets != null
+          ? <Asset {...this.props} asset={assets} order={assets.orders[0]}/>
+          : null
         }
         </div>
         

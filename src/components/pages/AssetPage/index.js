@@ -26,15 +26,6 @@ export default class AssetPage extends React.Component {
     super(props)
     this.onChangeAddress()
     onNetworkUpdate(this.onChangeAddress)
-    this.fetchDataAsset()
-  }
-
-  onError(error) {
-    // Ideally, you'd handle this error at a higher-level component
-    // using props or Redux
-    this.setState({ errorMessage: error.message })
-    setTimeout(() => this.setState({errorMessage: null}), 3000)
-    throw error
   }
 
   onChangeAddress = () => {
@@ -49,136 +40,37 @@ export default class AssetPage extends React.Component {
     })
   }
 
-  async fulfillOrder() {
-    const { order, accountAddress } = this.state
-    if (!accountAddress) {
-      await connectWallet()
-    }
-    try {
-      this.setState({ creatingOrder: true })
-      await this.seaport.fulfillOrder({ order, accountAddress })
-    } catch(error) {
-      this.onError(error)
-    } finally {
-      this.setState({ creatingOrder: false })
-    }
-  }
 
-  renderBuyButton(canAccept = true) {
-    const { creatingOrder } = this.state
-    const { accountAddress, order } = this.state
-    const buyAsset = async () => {
-      if (accountAddress && !canAccept) {
-        this.setState({
-          errorMessage: "You already own this asset!"
-        })
-        return
-      }
-      this.fulfillOrder()
-    }
-    return (
-      <button
-        disabled={creatingOrder}
-        onClick={buyAsset}
-        className="btn btn-primary w-100">
-        
-        Buy{creatingOrder ? "ing" : ""} for <SalePrice order={order} />
-
-      </button>
-    )
-  }
-
-  renderAcceptOfferButton(canAccept = true) {
-    const { creatingOrder } = this.state
-    const { accountAddress, order } = this.state
-    
-    const sellAsset = async () => {
-      if (accountAddress && !canAccept) {
-        this.setState({
-          errorMessage: "You do not own this asset!"
-        })
-        return
-      }
-      this.fulfillOrder()
-    }
-    return (
-      <button
-        disabled={creatingOrder}
-        onClick={sellAsset}
-        className={`btn btn-success w-100`}>
-
-        Sell{creatingOrder ? "ing" : ""} for <SalePrice order={order} />
-
-      </button>
-    )
-  }
-
-  renderExpirationBadge() {
-    const expirationTime = parseFloat(this.state.order.expirationTime)
-
-    if (expirationTime <= 0) {
-      return null;
-    }
-
-    const timeLeft = moment.duration(moment.unix(expirationTime).diff(moment()))
-
-    return (
-      <span className="badge bid-expiry-badge red">
-        <i className="tiny material-icons">timer</i>
-        <span className="expire-label">Expires in </span>
-        {timeLeft.humanize()}
-      </span>
-    )
-  }
-
-  async fetchDataAsset(){
-    //const { accountAddress } = accountAddress
-    console.log("tokenAddress : " + this.props.match.params.tokenAddress);
-    console.log("tokenId : " + this.props.match.params.tokenId);
-    const singleAsset = await this.seaport.api.getAsset(this.props.match.params.tokenAddress, this.props.match.params.tokenId, 1);
-    this.setState({ asset : singleAsset});
-    if(singleAsset.orders.length > 0 && this.state.order === undefined){
-      this.setState({ order : singleAsset.orders[0]})
-    }
+  onError(error) {
+    // Ideally, you'd handle this error at a higher-level component
+    // using props or Redux
+    this.setState({ errorMessage: error.message })
+    setTimeout(() => this.setState({errorMessage: null}), 3000)
+    throw error
   }
 
   render() {
-
-    const backgroundPage={
-      backgroundImage : `url(${Background})`,
-      backgroundColor : 'rgb(225, 107, 140)',
-      minHeight : '100vh'
-    }
-
-    const { asset, accountAddress, errorMessage, order } = this.state;
-    var isOwner = false;
-
-    var usernameOwner = "";
-
-    if(asset != null){
-      isOwner = accountAddress && accountAddress.toLowerCase() === asset.owner.address.toLowerCase()
-      if(asset.owner.user == null || asset.owner.user.username == null){
-        usernameOwner = asset.owner.address.substring(2,8);
-      }else if (asset.owner.user.username == 'NullAddress'){
-        usernameOwner = 'Multiple owner'
-      }else{
-        usernameOwner = asset.owner.user.username
-      }
-    }
-
     return (
-      <div>
+      <Log
+        seaport={this.seaport}
+        assetType='asset'
+        accountAddress={this.state.accountAddress}
+        //orderby='created_date'
+        assetContractAddress={this.props.match.params.tokenAddress}
+        token_id={this.props.match.params.tokenId}
+        singleAsset = {true} />
+      /*<div>
         {asset != null
           ? <React.Fragment>
               <Section style={backgroundPage}>
                 <div class="container">
                   <div class="asset-informations">
                     <div class="two-col">
-                      { /*image*/ }
+                      { /*image }
                       <img src={asset.imageUrlOriginal}></img>
                     </div>
                     <div class="two-col">
-                      { /* Title - Description - Owner - Creator - Price */}
+                      { /* Title - Description - Owner - Creator - Price }
                       <h1>{ asset.name }</h1>
                       <h4>Collection</h4> 
                       <p>{asset.assetContract.name}</p>
@@ -203,7 +95,7 @@ export default class AssetPage extends React.Component {
                       }
                     </div>
                   </div>
-                  {/*console.log("asset : " + JSON.stringify(asset)) */}
+                  {/*console.log("asset : " + JSON.stringify(asset)) }
                   {console.log("error : " + errorMessage)}
 
                   
@@ -212,7 +104,7 @@ export default class AssetPage extends React.Component {
             </React.Fragment>
           : <h1>Not found</h1>
         }
-      </div>
+      </div>*/
     )
   }
 }
