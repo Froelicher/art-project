@@ -73,7 +73,8 @@ export default class Asset extends React.Component {
     orderby: PropTypes.string,
     singleAsset : PropTypes.bool,
     order : PropTypes.object,
-    asset : PropTypes.object
+    asset : PropTypes.object,
+    full : PropTypes.bool.isRequired
   }
 
 
@@ -87,6 +88,7 @@ export default class Asset extends React.Component {
 
   async fulfillOrder() {
     const { accountAddress, order } = this.props
+    console.log(order)
     if (!accountAddress) {
       await connectWallet()
     }

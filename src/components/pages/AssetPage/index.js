@@ -58,7 +58,8 @@ export default class AssetPage extends React.Component {
         //orderby='created_date'
         assetContractAddress={this.props.match.params.tokenAddress}
         token_id={this.props.match.params.tokenId}
-        singleAsset = {true} />
+        singleAsset = {true}
+        full = {false} />
       /*<div>
         {asset != null
           ? <React.Fragment>

@@ -15,7 +15,8 @@ export default class Log extends React.Component {
     token_id : PropTypes.string,
     owner : PropTypes.string,
     orderby : PropTypes.string,
-    singleAsset : PropTypes.bool
+    singleAsset : PropTypes.bool,
+    full : PropTypes.bool.isRequired
   };
 
   state = {
@@ -60,6 +61,7 @@ export default class Log extends React.Component {
       bundled: this.state.onlyBundles ? true : undefined,
       // Possible query options:
       asset_contract_address : assetContractAddress,
+      order_direction : 'desc'
       //asset_contract_address : '0x495f947276749ce646f68ac8c248420045cb7b5e'
       // 'taker'
       //token_id : '43181488428587264351855320964023839419292599949489173029142631053139820675073'
@@ -67,7 +69,6 @@ export default class Log extends React.Component {
       // 'sale_kind'
       
     }, this.state.page)
-
     this.setState({ orders, total: count})
     
   }
@@ -83,8 +84,10 @@ export default class Log extends React.Component {
       // Possible query options:
       //asset_contract_address : assetContractAddress,
       owner : owner,
+      order_direction : 'desc'
       
     }, this.state.page)
+    console.log(orders)
     this.setState({ orders, total: count})
     
   }
@@ -95,6 +98,7 @@ export default class Log extends React.Component {
       asset_contract_address : assetContractAddress,
       order_by : orderby,
       tokenId : null,
+      order_direction : 'desc'
     }, this.state.page)
     this.setState({ assets, total : count});
   }
@@ -103,9 +107,10 @@ export default class Log extends React.Component {
     const { owner, orderby } = this.props
     const { assets, count } = await this.props.seaport.api.getAssets({
       owner : owner,
-      order_by : orderby
+      order_by : orderby,
+      order_direction : 'desc'
     }, this.state.page)
-    this.setState({assets});
+    this.setState({assets, total : count});
   }
 
   async fetchDataAsset(){
@@ -118,7 +123,28 @@ export default class Log extends React.Component {
   }
 
   paginateTo(page) {
-    this.setState({ orders: undefined, page }, () => this.fetchData())
+
+    console.log("address contract : " + this.props.assetContractAddress)
+    console.log("asset type : " + this.props.assetType)
+    console.log("asset type : " + this.props.owner)
+
+    if(this.props.assetContractAddress != null){
+      if(this.props.assetType == 'order'){
+        this.setState({ orders: undefined, page }, () => this.fetchData())
+      }else{
+        this.setState({ orders: undefined, page }, () => this.fetchDataAssets())
+      }
+    }
+
+    if(this.props.owner != undefined){
+      if(this.props.assetType == 'order'){
+        this.setState({ orders: undefined, page }, () => this.fetchDataByOwner())
+      }else{
+        this.setState({ orders: undefined, page }, () => this.fetchDataAssetsByOwner())
+      }
+    }
+
+    
   }
 
   toggleSide(side) {
@@ -235,6 +261,7 @@ export default class Log extends React.Component {
   render() {
     const { orders } = this.state
     const { assets } = this.state
+    const { full } = this.props
     var boolAsset = false
     var boolOrder = false
 
@@ -262,23 +289,47 @@ export default class Log extends React.Component {
           boolOrder == true
             ? <React.Fragment>
                 <div className="card-deck">
-                  {orders.map((order, i) => {
+                  {
+                  full == false 
+                  ? orders.map((order, i) => {
                     if(i <= 2)
                       return <Asset {...this.props} key={i} order={order}  />
-                  })}
+                  })
+                  : orders.map((order, i) => {
+                      return <Asset {...this.props} key={i} order={order}  />
+                  })
+                  }
                 </div>
+                {
+                full == true
+                ? this.renderPagination()
+                : null
+                }
+
               </React.Fragment>
           
             :  boolAsset == true
           
               ? <React.Fragment>
                   <div className="card-deck">
-                    {assets.map((asset, i) => {
+                    {
+                    full == false
+                    ? assets.map((asset, i) => {
                       if(i <= 2)
                         return <Asset {...this.props} key={i} asset={asset}  />
                       
-                    })}
+                    })
+                    : assets.map((asset, i) => {
+                        return <Asset {...this.props} key={i} asset={asset}  />
+                      
+                    })
+                    }
                   </div>
+                  {
+                  full == true
+                  ? this.renderPagination()
+                  : null
+                  }
                 </React.Fragment>
 
               : <div className="text-center">Loading...</div>
