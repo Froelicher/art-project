@@ -13,8 +13,10 @@ import SalePrice from '../common/SalePrice';
 const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
   width : 100%;
   min-width: 200px;
-  background : none;
+  background : #fff;
   border : none;
+  padding : 10px;
+  border : solid 1px #640106;
   img {
     height: 200px;
     max-width: 100%;
@@ -24,15 +26,23 @@ const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
     height: 60px;
   }
   a h5.card-title{
-    color : #000;
+    color : #640106;
     text-align : center;
     margin-bottom : 0px;
+    font-weight : bold;
+    font-size: 18px;
   }
 
   .list-group-item{
     background : none;
     text-align : center;
     padding : 0;
+    color : #e00613;
+    font-size : 14px;
+  }
+
+  .list-group-flush{
+    border : none;
   }
 
   .card-body{
@@ -47,10 +57,10 @@ const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
   }
 
   .card-footer .text-muted{
-    color : #fff !important;
     text-align : center;
     margin : auto;
     display : block;
+    color : #e00613 !important;
   }
 `
 

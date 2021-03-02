@@ -57,6 +57,10 @@ nav ul li a {
   text-decoration: none;
 }
 
+nav ul li a:hover{
+  color : #e00613 !important;
+}
+
 nav ul li img{
   max-height : 35px;
 }

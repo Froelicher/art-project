@@ -5,6 +5,7 @@ import Log from '../../Log';
 import Header from '../../Header';
 import CryptHODL from '../Token/img/Short-Squeeze-2.gif';
 import Background from './img/texture.png';
+import BackgroundHeader from '../Home/img/5013252.jpg';
 import BackgroundGloss from './img/gloss.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
@@ -47,7 +48,6 @@ export default class Home extends React.Component {
     const header = {
       fontFamily: 'Menlo-Regular, Menlo, monospace',
       lineHeight: '10px',
-      color: 'white',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       fontSize: 44
     }
@@ -89,10 +89,10 @@ export default class Home extends React.Component {
       <React.Fragment>
         {/*<div class="gloss" style={gloss}></div>*/}
         <Parallax ref="parallax" pages={4}>
-          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(244, 167, 185)', backgroundRepeat : 'repeat'}} />
+          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${BackgroundHeader})`, backgroundColor : 'rgb(244, 167, 185)', backgroundRepeat : 'repeat'}} />
           <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(225, 107, 140)', backgroundRepeat : 'repeat' }} />
-          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(220, 159, 180)', backgroundRepeat : 'repeat' }} />
-          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(208, 16, 76)', backgroundRepeat : 'repeat' }} />
+          <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : '#F8C3CD', backgroundRepeat : 'repeat' }} />
+          <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : '#EEA9A9', backgroundRepeat : 'repeat' }} />
     
           <Parallax.Layer
                 factor={1}
@@ -103,13 +103,13 @@ export default class Home extends React.Component {
                 onScroll={() => this.refs.parallax.scrollTo(1)}>
                 
                 <Section>
-                <div class="logo-header">
+                <div class="logo-header japanColorText">
                   <h1>宇衣安</h1>
                 </div>
-                  <div class="one-col">
+                  <div class="one-col japanColorText">
                     <h1>Izumi - NFT Gallery</h1>
                   </div>
-                  <div class="one-col">
+                  <div class="one-col japanColorText">
                     <h4 class="sub-title-home">Physical and Digital cryptoarts with proof of ownership stored on the Ethereum blockchain.</h4>
                   </div>
                 </Section>
@@ -253,6 +253,10 @@ const ImgRibbon = styled.img`
 `
 
 const Section = styled.section`
+
+  .japanColorText h1, .japanColorText h4{
+    color: #43341B;
+  }
 
   .logo-header h1{
     font-size : 120px;

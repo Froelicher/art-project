@@ -3,6 +3,13 @@ import React from 'react';
 export default class AssetMetadata extends React.Component {
   render() {
     const { asset } = this.props
+    var name = asset.name;
+
+    if(name != null){
+      if(name.length > 15){
+        name = asset.name.substring(0,15);
+      }
+    }
 
     return (
       <React.Fragment>
@@ -13,7 +20,7 @@ export default class AssetMetadata extends React.Component {
         </a>
           
         <div className="card-body h-25">
-        <a target="_blank" href={"/asset/"+asset.tokenAddress+"/"+asset.tokenId}><h5 className="card-title">{asset.name}</h5></a>
+        <a target="_blank" href={"/asset/"+asset.tokenAddress+"/"+asset.tokenId}><h5 className="card-title">{name}</h5></a>
         </div>
       </React.Fragment>
     )
