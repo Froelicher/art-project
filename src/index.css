@@ -52,7 +52,7 @@ nav ul li {
   padding: 20px;
 }
 
-nav.main-menu ul li a {
+nav ul li a {
   color: white !important;
   text-decoration: none;
 }
@@ -73,10 +73,6 @@ nav .under-logo{
   left: -15px;
   font-size: 30px;
   font-family: 'Reggae One';
-}
-
-nav ul li a{
-  color : #e00613 !important;
 }
 
 img{
