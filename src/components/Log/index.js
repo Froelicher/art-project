@@ -87,7 +87,7 @@ export default class Log extends React.Component {
       order_direction : 'desc'
       
     }, this.state.page)
-    console.log(orders)
+    console.log(this.state.page)
     this.setState({ orders, total: count})
     
   }
@@ -201,6 +201,9 @@ export default class Log extends React.Component {
     const { page, total } = this.state
     const ordersPerPage = this.props.seaport.api.pageSize
     const noMorePages = page*ordersPerPage >= total
+
+    console.log("noMorePages : " + total)
+
     return (
       <nav>
         <ul className="pagination justify-content-center">

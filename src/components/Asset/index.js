@@ -151,14 +151,15 @@ export default class Asset extends React.Component {
       this.fulfillOrder()
     }
     return (
-      <button
+      /*<button
         disabled={creatingOrder}
         onClick={sellAsset}
         className={`btn btn-success w-100`}>
 
         Sell{creatingOrder ? "ing" : ""} for <SalePrice order={order} />
 
-      </button>
+      </button>*/
+      <p>Offer at <SalePrice order={order}/></p>
     )
   }
 
@@ -260,7 +261,7 @@ export default class Asset extends React.Component {
                       <h4>Owner</h4>
                       <p><img class="profile_img" src={asset.owner.profile_img_url}></img> {usernameOwner}</p>
                       {order != undefined
-                      ? <p>Price : 
+                      ? <div class="price">
                         {order.side === OrderSide.Buy
                           ? this.renderAcceptOfferButton(isOwner)
                           : null
@@ -268,7 +269,7 @@ export default class Asset extends React.Component {
                         {order.side === OrderSide.Sell
                           ? this.renderBuyButton(!isOwner)
                           : null
-                        }</p>
+                        }</div>
                       : null
                       }
                     </div>
