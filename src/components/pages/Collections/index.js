@@ -94,6 +94,7 @@ export default class Home extends React.Component {
             <div class="container">
               <div class="one-col" style={one_page}>
                 <h2 style={title_page_center}>My collection</h2>
+                <h6 style={title_page_center}>here you will find the NFTs that we collect, acquired on Opensea, Rarible and others, some are for sale, others are not for the moment.</h6>
               </div>
               <div class="one-col" style={one_page}>
                 <Log

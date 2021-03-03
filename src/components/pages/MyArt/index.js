@@ -25,21 +25,20 @@ export default class MyArt extends React.Component {
                 <h1>宇衣安</h1>
               </div>
               <div  class="one-col">
-                <h2>CryptoArt inspired by reality</h2>
+                <h2>Izumi - NFT Gallery</h2>
                  
-                <p><a href="https://app.rarible.com/crypthodl/collectibles" target="_blank">CryptHODL</a> Cryptoarts are Bitcoin collectibles produced in limited edition most often of only 50 pieces.<br></br></p>
-                <p>They are delivered with their NFT version based on the <a href="http://localhost:3000/Token" target="_blank">CryptHODL(CHODL)</a> Token an ERC-721 tokens that is hosted on Ethereum's own blockchain. The main use of this Token is to register a Cryptoart on the BlockChain, Each Cryptoart "CryptHODL" has a certificate of authenticity linked to the NFT version and the 'BTC public address of the Cryptoart.<br></br></p>
-                <p> On each Cryptoart "CryptHODL" you will find a 3D Hologram tamper evident Sticker with a transparent window. On the visible part there is a QR Code with your public BTC address, to access the private key disimulated under the public key you will have to take off the Tamper Evident hologram sticker.<br></br></p> 
-                <p>The private and public BTC keys are created on a secure computer, to guarantee a trust between artist and buyer, my identity is not private, it can be retrieved with a WHOIS
+                <p><a href="https://app.rarible.com/crypthodl/collectibles" target="_blank">Izumi - NFT Gallery</a> is a NFT Creator and Collector based in Switzerland.<br></br></p>
+                <p>Izumi's NFTs are both inspired by Japan and technology, they are full of color and have their own unique identity.<br></br></p>
+                <p>In addition to creating and collecting, Izumi - NFT Gallery has a blog dedicated to criticism of the NFTs that we have acquired, various subjects are covered on each NFT found in the blog, and a 2-minute video will accompany you.<br></br></p> 
+                <p>Various events are organized on our site, including the sale of our creations as well as the auctions on our collection.
                 </p> 
-                <p><a href="https://app.rarible.com/cryptart/onsale" target="_blank">CryptArt</a> NFTs are digital arts inspired by current events in the world of Cryptocurrency</p>
-                <p>In most cases they are "Unlockable" which means that with the purchase of "CryptArt" You will receive a link with the high definition printable version in A2 format</p>
-                <p>Each NFT CryptArt is limited to 12 editions based on the ERC 1155 <a href="http://localhost:3000/Token" target="_blank">CryptArt(CART)</a> Token an ERC-1155 tokens that is hosted on Ethereum's own blockchain, this Token is used for MrCryptHODL's NFT Cryptoarts unlike the ERC721 CryptHODL(CHODL) token which is used to register physical Cryptoarts on the blockchain.<br></br></p>
-                <p>being in the world of Bitcoin and Cryptocurrency since 2012, MrCryptHODL is a cryptocurrency enthusiast and a user above all who lives in Geneva in Switzerland, for years he has been fascinated by part of this world, cryptoarts, art is cryptocurrency are 2 things so identical, both are art.<br></br></p>
+                <p><a href="https://app.rarible.com/cryptart/onsale" target="_blank">Izumi NFT Gallery</a> NFTs are digital arts limited to 10pcs per NFT !</p>
+                <p>In most cases they are "Unlockable" which means that with the purchase of NFT You will receive a link with the high definition printable version.</p>
+                <p>Each NFT Izumi - NFT Gallery is limited to 10 editions based on the ERC 1155 <a href="http://localhost:3000/Token" target="_blank">Izumi(INFT)</a> Token an ERC-1155 tokens that is hosted on Ethereum's own blockchain.<br></br></p>
                   
-                <p>2021 will be the year of the great Cryptoarts.</p>
+                <p>2021 will be the year of the great NFT.</p>
 
-                  <p>MrCryptHODL<br></br>
+                  <p>IZUMI<br></br>
                   ETH SIGNED MESSAGE :<a href="https://etherscan.io/verifySig/2359" target="_blank">https://etherscan.io/verifySig/2359</a></p>
               </div>
             </div>

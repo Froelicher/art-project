@@ -94,6 +94,7 @@ export default class Home extends React.Component {
             <div class="container">
               <div class="one-col" style={one_page}>
                 <h2 style={title_page_center}>My creations</h2>
+                <h6 style={title_page_center}>here you will find our NFT creations from each of the collections, future drops will be here or on Rarible, stay tuned!</h6>
               </div>
               <div class="one-col" style={one_page}>
                 <Log
