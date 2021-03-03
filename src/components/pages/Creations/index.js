@@ -4,7 +4,7 @@ import Parallax from 'react-springy-parallax'
 import Log from '../../Log';
 import Header from '../../Header';
 import CryptHODL from '../Token/img/Short-Squeeze-2.gif';
-import Background from './img/texture.png';
+import Background from './img/cryptoart.png';
 import BackgroundGloss from './img/gloss.png';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
