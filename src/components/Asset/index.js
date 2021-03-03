@@ -8,7 +8,10 @@ import styled from 'styled-components';
 import { connectWallet } from '../../constants';
 import { OrderSide } from 'opensea-js/lib/types';
 import Background from '../pages/Home/img/texture.png';
+import OpenSeaLogo from './img/opensea-logomark-white.png';
 import SalePrice from '../common/SalePrice';
+import * as XLSX from 'xlsx';
+import f  from '../../critics/critics.xlsx';
 
 const Card = styled.div.attrs({ className: "card mx-2 mb-4" })`
   width : 100%;
@@ -87,6 +90,7 @@ export default class Asset extends React.Component {
     full : PropTypes.bool.isRequired
   }
 
+  
 
   onError(error) {
     // Ideally, you'd handle this error at a higher-level component
@@ -192,6 +196,7 @@ export default class Asset extends React.Component {
       minHeight : '100vh'
     }
 
+
     if(asset != null){
       owner = asset.owner;
     }
@@ -217,8 +222,8 @@ export default class Asset extends React.Component {
 
       isOwner = accountAddress && accountAddress.toLowerCase() === owner.address.toLowerCase()
     }
-
     
+
 
     if(!this.props.singleAsset){
       return (
@@ -236,6 +241,21 @@ export default class Asset extends React.Component {
         </Card>
       )
     }else{
+      /*var name = f.name;
+      const reader = new FileReader();
+      reader.onload = (evt) => { // evt = on_file_select event
+          /* Parse data */
+          /*const bstr = evt.target.result;
+          const wb = XLSX.read(bstr, {type:'binary'});
+          /* Get first worksheet */
+        /*  const wsname = wb.SheetNames[0];
+          const ws = wb.Sheets[wsname];
+          /* Convert array of arrays */
+        /*  const data = XLSX.utils.sheet_to_csv(ws, {header:1});
+          /* Update state */
+         /* console.log("Data>>>"+data);
+      };
+      reader.readAsBinaryString(f);*/
       return(
         <div>
         {asset != null
@@ -250,6 +270,8 @@ export default class Asset extends React.Component {
                     <div class="two-col">
                       { /* Title - Description - Owner - Creator - Price */}
                       <h1>{ asset.name }</h1>
+                      {console.log(asset)}
+                      <a target="_blank" href={asset.openseaLink}><img src={OpenSeaLogo} class="opensea-button"></img></a>
                       <h4>Collection</h4> 
                       <p>{asset.assetContract.name}</p>
                       <h4>Description</h4>
@@ -302,6 +324,11 @@ h1{
   text-decoration : underline;
 }
 
+.opensea-button{
+  max-width : 50px;
+  margin-bottom : 15px;
+}
+
 .two-col{
   width : 50%;
   display : inline-block;
@@ -329,4 +356,33 @@ h1{
   max-height : 30px;
 }
 
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #b90000;
+  background-color: #ffffff;
+  border-color: #b90000;
+  font-weight : bold;
+}
+
+.btn-primary:active:focus{
+  box-shadow : none !important;
+}
+
+.btn-primary:focus{
+  box-shadow : none !important;
+}
+
+.btn-primary{
+  color: #ffffff;
+  background-color: #b90000;
+  border-color: #b90000;
+  font-weight : bold; 
+}
+
+.btn-primary:hover {
+  color: #b90000;
+  background-color: #ffffff;
+  border-color: #b90000;
+  font-weight : bold;
+}
+  
 `  

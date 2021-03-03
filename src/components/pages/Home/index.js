@@ -98,9 +98,7 @@ export default class Home extends React.Component {
                 factor={1}
                 offset={0}
                 speed={0.1}
-                style={header}
-                onClick={() => this.refs.parallax.scrollTo(1)}
-                onScroll={() => this.refs.parallax.scrollTo(1)}>
+                style={header}>
                 
                 <Section>
                 <div class="logo-header japanColorText">
@@ -123,8 +121,7 @@ export default class Home extends React.Component {
                 offset={1}
                 speed={0.2}
                 style={styles}
-                class="layerParallax"
-                onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
+                class="layerParallax">
             <Section>
             <div class="container">
               <div class="whatis-section">
@@ -171,8 +168,7 @@ export default class Home extends React.Component {
                 offset={2}
                 speed={0.3}
                 style={styles}
-                class="layerParallax"
-                onClick={(e) =>  { if(e.target.classList.contains('layerParallax')) {this.refs.parallax.scrollTo(2); console.log(e.target.classList)} }}>
+                class="layerParallax">
             <Section>
             <div class="container">
               <div class="one-col" style={one_page}>
@@ -210,8 +206,7 @@ export default class Home extends React.Component {
                 factor={1}
                 offset={3}
                 speed={0.4}
-                style={styles}
-                onClick={() => this.refs.parallax.scrollTo(3)}>
+                style={styles}>
                 <Section>
                   <div class="container">
                     <div class="one-col" style={one_page}>
