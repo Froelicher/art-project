@@ -54,11 +54,11 @@ export default class Token extends React.Component {
   }
 }
 const Section = styled.section`
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    width: 100%;
-    display : inline-block;
+background-repeat: repeat;
+padding-bottom : 50px;
+
+height: 100vh;
+width: 100%;
 
 .column {
     display: flex;

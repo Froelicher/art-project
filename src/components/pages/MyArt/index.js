@@ -5,8 +5,7 @@ import Header from '../../Header';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 import './index.css';
-import Background from '../Home/img/texture.png';
-import Mrcrypthodl from './img/Cryptoart Bitcoin.png';
+import Background from './img/Cryptoart.png';
 
 
 export default class MyArt extends React.Component {
@@ -54,7 +53,7 @@ const Section = styled.section`
 background-repeat: repeat;
 padding-bottom : 50px;
 
-height: 100%;
+height: 100vh;
 width: 100%;
 
 .title-page h1{
