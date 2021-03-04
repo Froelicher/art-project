@@ -5,7 +5,7 @@ import Header from '../../Header';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../../constants';
 import './index.css';
-import Background from './img/Cryptoart.png';
+import Background from './img/Cryptart.png';
 import CryptArt from './img/CryptArt-Logo.png';
 import CryptHODL from './img/CryptHODL-logo.png';
 import CryptH from './img/Logo-Twitter.png';
