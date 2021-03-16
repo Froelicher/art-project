@@ -52,13 +52,13 @@ export default class Home extends React.Component {
       fontSize: 44
     }
 
-    const buttonBottom = {
-      fontSize: 10,
-      position : 'absolute',
-      bottom : 20,
-      margin : 'auto',
-      cursor : 'pointer'
-    }
+    const buttonBottom = {  
+      fontSize: 10, 
+      position : 'absolute',  
+      bottom : 20,  
+      margin : 'auto',  
+      cursor : 'pointer'  
+    } 
 
     const title_page = {
       fontSize: 38
@@ -88,11 +88,13 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         {/*<div class="gloss" style={gloss}></div>*/}
-        <Parallax ref="parallax" pages={4}>
-          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${BackgroundHeader})`, backgroundColor : 'rgb(244, 167, 185)', backgroundRepeat : 'repeat'}} />
+        <Parallax ref="parallax" pages={5}>
+          <div class="home">
+          <Parallax.Layer factor={1} offset={0} speed={0} style={{ backgroundImage : `url(${BackgroundHeader})`, backgroundColor : 'rgb(244, 167, 185)', backgroundRepeat : 'repeat', backgroundSize : 'cover', backgroundPosition : 'center bottom'}} />
           <Parallax.Layer factor={1} offset={1} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : 'rgb(225, 107, 140)', backgroundRepeat : 'repeat' }} />
           <Parallax.Layer factor={1} offset={2} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : '#F8C3CD', backgroundRepeat : 'repeat' }} />
           <Parallax.Layer factor={1} offset={3} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : '#EEA9A9', backgroundRepeat : 'repeat' }} />
+          <Parallax.Layer factor={1} offset={4} speed={0} style={{ backgroundImage : `url(${Background})`, backgroundColor : '#DC9FB4', backgroundRepeat : 'repeat' }} />
     
           <Parallax.Layer
                 factor={1}
@@ -100,20 +102,17 @@ export default class Home extends React.Component {
                 speed={0.1}
                 style={header}>
                 
-                <Section>
+                <Section class="header-home-section">
                 <div class="logo-header japanColorText">
                   <h1>宇衣安</h1>
                 </div>
                   <div class="one-col japanColorText">
                     <h1>Izumi - NFT Gallery</h1>
                   </div>
-                  <div class="one-col japanColorText">
+                  {/*                  <div class="one-col japanColorText">
                     <h4 class="sub-title-home">Physical and Digital cryptoarts with proof of ownership stored on the Ethereum blockchain.</h4>
-                  </div>
+                  </div>*/}
                 </Section>
-                <div style={buttonBottom}>
-                  <p>Go to bottom</p>
-                </div>
             </Parallax.Layer>
           <main>
           <Parallax.Layer
@@ -122,7 +121,7 @@ export default class Home extends React.Component {
                 speed={0.2}
                 style={styles}
                 class="layerParallax">
-            <Section>
+            <Section class="content-section">
             <div class="container">
               <div class="whatis-section">
                 <div  class="one-col">
@@ -150,17 +149,13 @@ export default class Home extends React.Component {
               <div class="whatis-section">
                 <div  class="one-col">
                   <h1>What is Izumi NFT Gallery ?</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vulputate dolor id ornare bibendum. Nam iaculis purus sed vestibulum tincidunt. 
-                    Etiam eleifend ipsum sed ultrices pulvinar. Sed non nulla a augue semper accumsan vitae non nunc. 
-                    Quisque est massa, pharetra in faucibus viverra, venenatis egestas nulla</p>
+                  <p>Izumi - NFT Gallery is a NFT Creator and Collector based in Switzerland.<br></br>
+                  Izumi's NFTs are both inspired by Japan and technology, they are full of color and have their own unique identity.</p>
                   
                 </div>
               </div>
             </div>
             </Section>
-            <div style={buttonBottom}>
-                  <p class="layerParallax">Go to bottom</p>
-            </div>
             </Parallax.Layer>
 
             <Parallax.Layer
@@ -169,21 +164,34 @@ export default class Home extends React.Component {
                 speed={0.3}
                 style={styles}
                 class="layerParallax">
-            <Section>
+            <Section class="content-section">
             <div class="container">
               <div class="one-col" style={one_page}>
                 <h2 style={title_page_center}>My collection (Items I own)</h2>
+                <h3>Here you will find the NFTs that we collect, acquired on Opensea, Rarible and others, some are for sale, others are not for the moment</h3>
               </div>
               <div class="one-col" style={one_page}>
                 <Log
                   seaport={this.seaport}
-                  assetType='order'
+                  assetType='asset'
                   accountAddress={this.state.accountAddress}
-                  owner={'0x01e638b805108e7a2e928a1b0c263890f017a3b5'}
+                  owner={'0xea90ec59691c4bf29f9ea75b39fa7b2880580fa1'}
                   singleAsset={false}
                   full = {false}/>
               </div>
-              <div class="one-col" style={one_page}>
+            </div>
+            </Section>
+            </Parallax.Layer>
+
+            <Parallax.Layer
+                factor={1}
+                offset={3}
+                speed={0.3}
+                style={styles}
+                class="layerParallax">
+            <Section class="content-section">
+            <div class="container">
+            <div class="one-col" style={one_page}>
                 <h2 style={title_page_center}>My lasts critics</h2>
               </div>
               <div class="one-col" style={one_page}>
@@ -197,20 +205,19 @@ export default class Home extends React.Component {
               </div>
             </div>
             </Section>
-            <div style={buttonBottom}>
-                  <p class="layerParallax">Go to bottom</p>
-            </div>
             </Parallax.Layer>
 
             <Parallax.Layer
                 factor={1}
-                offset={3}
+                offset={4}
                 speed={0.4}
-                style={styles}>
-                <Section>
+                style={styles}
+                class="layerParallax">
+                <Section class="content-section">
                   <div class="container">
                     <div class="one-col" style={one_page}>
                       <h2 style={title_page_center}>My lasts creations</h2>
+                      <h3>Here you will find our NFT creations from each of the collections, future drops will be here or on Rarible, stay tuned!</h3>
                     </div>
                     <div class="one-col" style={one_page}>
                     <Log
@@ -218,18 +225,17 @@ export default class Home extends React.Component {
                       assetType='asset'
                       accountAddress={this.state.accountAddress}
                       //orderby='created_date'
-                      assetContractAddress={'0xc233baa25ae0cadb5928550ba437acb2af637f77'}
+                      assetContractAddress={'0x9ffd672a858ff25258f900cc38912b376f472200'}
                       singleAsset={false}
                       full = {false} />
                     </div>
                   </div>
                 </Section>
-                <div style={buttonBottom}>
-                  <p class="layerParallax">Go to bottom</p>
-                </div>
             </Parallax.Layer>
           </main>
+        </div>
         </Parallax>
+        
         </React.Fragment>
     )
   }
@@ -247,85 +253,7 @@ const ImgRibbon = styled.img`
   }
 `
 
-const Section = styled.section`
+const Section = styled.section`  
 
-  .japanColorText h1, .japanColorText h4{
-    color: #43341B;
-  }
-
-  .logo-header h1{
-    font-size : 120px;
-    text-align : center;
-    display : block;
-  }
-
-  .img-whatis{
-    width : 80%;
-    margin : auto;
-    display : block;
-  }
-
-  .whatis-section, .howto-section{
-    margin-bottom : 50px;
-    text-align : justify;
-  }
-
-  .howto-section p{
-    text-align : justify;
-  }
-
-  .whatis-section .one-col h1, .howto-section .one-col h1{
-    font-size : 32px;
-  }
-
-  .sub-title-home{
-    text-align : center;
-    margin-top : 20px;
-  }
-
-  .one-col{
-    text-align : center;
-  }
-
-  .one-col h1{
-    display: block;
-  }
   
-  .two-col{
-    width : 50%;
-    display : inline-block;
-    height : 100%;
-    vertical-align : top;
-  }
-  .two-col p{
-    padding-right : 20px;
-  }
-  .two-col:last-child p{
-    padding-right : 0px;
-  }
-  .how-section{
-    padding-top : 60px;
-  }
-  .three-col{
-    width : 33%;
-    display : inline-block;
-    padding : 20px 0px;
-    height : 100%;
-    vertical-align : top;
-  }
-  .three-col p{
-    padding-right : 20px;
-  }
-  .three-col:last-child p{
-    padding-right : 0px;
-  }
-  .three-col h4{
-    vertical-align : top;
-    font-size : 10pt;
-    color : #000;
-    font-weight : 700;
-  }
-  .logo{
-    max-width : 100%;
-  }
 `

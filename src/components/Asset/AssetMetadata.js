@@ -7,7 +7,7 @@ export default class AssetMetadata extends React.Component {
 
     if(name != null){
       if(name.length > 15){
-        name = asset.name.substring(0,15);
+        name = asset.name.substring(0,15) + " [...]";
       }
     }
 
@@ -20,7 +20,7 @@ export default class AssetMetadata extends React.Component {
         </a>
           
         <div className="card-body h-25">
-        <a target="_blank" href={"/asset/"+asset.tokenAddress+"/"+asset.tokenId}><h5 className="card-title">{name}</h5></a>
+        <a href={"/asset/"+asset.tokenAddress+"/"+asset.tokenId}><h5 className="card-title">{name}</h5></a>
         </div>
       </React.Fragment>
     )

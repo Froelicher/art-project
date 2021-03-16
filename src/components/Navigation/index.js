@@ -7,21 +7,42 @@ import logo from './img/red-circle.png';
 
 export default class Navigation extends React.Component {
 
+  state  = {change : false}
+
+  clickResponsiveMenu = () => {
+    this.setState({
+      change: !this.state.change
+    })
+  }
+
   render(){
+    const menuVis = this.state.change ? 'change' : '';
     return(
-      <nav class="main-menu">
+      <div class={`menu ${menuVis}`}>
+      <nav class={`main-menu ${menuVis}`}>
         <div class="under-logo">
           <p>宇衣安</p>
         </div>
         <ul>
-          <li><NavLink to="/"><img src={logo}></img></NavLink></li>
-          <li><NavLink to="/">Home</NavLink></li> 
-          <li><NavLink to="/MyArt">About</NavLink></li>
-          <li><NavLink to="/Collection">My collection</NavLink></li>
-          <li><NavLink to="/Creations">My creations</NavLink></li>
-          <li><NavLink to="/Contact">Contact</NavLink></li>
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/"><img src={logo}></img></NavLink></li>
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/">Home</NavLink></li> 
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/MyArt">About</NavLink></li>
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/Collection">My collection</NavLink></li>
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/Creations">My creations</NavLink></li>
+          <li onClick={this.clickResponsiveMenu}><NavLink to="/Contact">Contact</NavLink></li>
         </ul>
       </nav>
+      <div class={`responsive-menu ${menuVis}`} onClick={this.clickResponsiveMenu}>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <script>
+      
+      </script>
+      </div>
+
+      
     )
   }
 }

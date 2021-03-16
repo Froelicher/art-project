@@ -95,3 +95,229 @@ body, html {
 height: 100%;
 margin: 0;
 }
+
+
+/* HOME PAGE */
+
+.home .container{
+  padding-top : 20px;
+}
+
+.home .japanColorText h1, .japanColorText h4{
+  color: #920303;
+  font-weight: bold;
+}
+
+.home .logo-header h1{
+  font-size : 120px;
+  text-align : center;
+  display : block;
+}
+
+.home .img-whatis{
+  width : 80%;
+  margin : auto;
+  display : block;
+}
+
+.home .whatis-section, .howto-section{
+  margin-bottom : 50px;
+  text-align : justify;
+}
+
+.home .howto-section p{
+  text-align : justify;
+}
+
+.home .whatis-section .one-col h1, .howto-section .one-col h1{
+  font-size : 32px;
+}
+
+.home .sub-title-home{
+  text-align : center;
+  margin-top : 20px;
+}
+
+.home .one-col{
+  text-align : center;
+}
+
+.home .one-col h1{
+  display: block;
+}
+
+.home .two-col{
+  width : 50%;
+  display : inline-block;
+  height : 100%;
+  vertical-align : top;
+}
+.home .two-col p{
+  padding-right : 20px;
+}
+.home .two-col:last-child p{
+  padding-right : 0px;
+}
+.home .how-section{
+  padding-top : 60px;
+}
+.home .three-col{
+  width : 33%;
+  display : inline-block;
+  padding : 20px 0px;
+  height : 100%;
+  vertical-align : top;
+}
+.home .three-col p{
+  padding-right : 20px;
+}
+.home .three-col:last-child p{
+  padding-right : 0px;
+}
+.home .three-col h4{
+  vertical-align : top;
+  font-size : 10pt;
+  color : #000;
+  font-weight : 700;
+}
+.home .logo{
+  max-width : 100%;
+}
+
+.responsive-menu{
+  display : none;
+}
+
+.menu{
+  position: relative;
+}
+
+@media only screen and (max-width: 1000px) {
+  .content-section{
+    position : absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+
+  .header-home-section{
+    padding : 0px 20px;
+  }
+
+  .home .one-col p, .home .two-col p{
+    font-size : 12px;
+  }
+
+  .home .one-col h1, .home .two-col h1{
+    font-size : 24px !important;
+  }
+
+  .home .two-col h3{
+    font-size: 16px;
+    text-align: center;
+    padding-right: 20px;
+  }
+
+  .home .howto-section, .home .whatis-section{
+    margin-bottom: 20px;
+  }
+
+  .home .content-section h2{
+    font-size : 24px !important;
+  }
+
+  .home .card img{
+    height : 100px;
+  }
+
+  .menu{
+    height: 50px;
+    position: absolute;
+    z-index: 99;
+    right: 0;
+  }
+
+  .menu.change{
+    position : relative;
+    height: 100vh;
+    z-index: 10;
+  }
+
+  nav.main-menu{
+    display : none;
+  }
+
+  nav.main-menu.change{
+    display : block;
+    height : 100vh;
+    z-index : 10;
+  }
+
+  nav.main-menu ul{
+    display : block;
+    height : 100vh;
+    background-color : #EEA9A9;
+  }
+
+  nav .under-logo{
+    writing-mode: horizontal-tb;
+    top : 20px;
+    left : 80px;
+    z-index : 14;
+  }
+  .responsive-menu{
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top : 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 14;
+  }
+
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+  /* ASSET PAGE */
+  .asset-informations .two-col {
+    width : 100% !important;
+    margin : 0;
+    padding : 10px !important;
+  }
+
+  .asset-informations .two-col:first-child, .asset-informations .two-col:last-child{
+    padding : 0px;
+  }
+
+  .asset-informations .two-col h1{
+    padding-top : 20px;
+    font-size : 24px;
+    display : block;
+    margin : auto;
+  }
+
+  .asset-informations{
+    margin-top : 0px !important;
+  }
+
+}

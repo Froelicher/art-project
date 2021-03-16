@@ -223,6 +223,13 @@ export default class Asset extends React.Component {
       isOwner = accountAddress && accountAddress.toLowerCase() === owner.address.toLowerCase()
     }
     
+    var collection = asset.assetContract.name
+
+    if(collection != null){
+      if(collection.length > 15){
+        collection = asset.assetContract.name.substring(0,15) + " [...]";
+      }
+    }
 
 
     if(!this.props.singleAsset){
@@ -236,7 +243,7 @@ export default class Asset extends React.Component {
             </li>
           </ul>
           <div className="card-footer">
-            <small className="text-muted">Collection : <b>{asset.assetContract.name}</b></small>
+            <small className="text-muted">Collection : <b>{collection}</b></small>
           </div>
         </Card>
       )
@@ -347,6 +354,7 @@ h1{
 
 .two-col p{
   padding-right : 20px;
+  word-wrap : break-word;
 }
 .two-col:last-child p{
   padding-right : 0px;

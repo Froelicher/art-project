@@ -101,7 +101,7 @@ export default class Home extends React.Component {
                   seaport={this.seaport}
                   assetType='asset'
                   accountAddress={this.state.accountAddress}
-                  assetContractAddress={'0xc2c747e0f7004f9e8817db2ca4997657a7746928'}
+                  assetContractAddress={'0x9ffd672a858ff25258f900cc38912b376f472200'}
                   singleAsset={false}
                   full = {true}/>
               </div>

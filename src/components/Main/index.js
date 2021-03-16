@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from '../pages/Home';
 import MyArt from '../pages/MyArt';
-import Token from '../pages/Token';
 import AssetPage from '../pages/AssetPage';
 import Collection from '../pages/Collections';
 import Contact from '../pages/Contact';
